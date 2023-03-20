@@ -1,25 +1,19 @@
-import React, { useState } from 'react'
-import Modal from './components/Modal/Modal';
-
-import Schedule from './components/Schedule/Schedule'
+import React from 'react'
+import Footer from './components/Footer';
+import Header from './components/Header';
+import Main from './components/Main';
+import YourSchedule from './components/Schedule/YourSchedule';
 
 export default function createSchedule() {
 
-  const [notRamadan, setnotRamadan] = useState(false)  
-  const [lectures, setLectures] = useState([]);
 
-  function addClass(lecture){
-    setLectures([...lectures, lecture])
-  }
-
-  function toggleNotRamadan() {
-    setnotRamadan(!notRamadan);
-  }
 
   return (
     <div>
-        <Modal addClass={addClass} toggle={toggleNotRamadan}/>
-        <Schedule lectures={lectures} notRamadan={notRamadan}/>
+      <Header />
+      <Main />
+      <YourSchedule />
+      <Footer />
     </div>
   )
 }

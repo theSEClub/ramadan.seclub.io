@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import DaysInput from './DaysInput';
 import TimeInput from './TimeInput';
 
-export default function AddCourseForm({addClass, toggle}) {
+export default function AddCourseForm({addClass, toggleNotRamadan, toggleModal}) {
 
     const [classTitle, setClassTitle] = useState("");
     const [selectedDays, setSelectedDays] = useState([]);
@@ -41,17 +41,19 @@ export default function AddCourseForm({addClass, toggle}) {
         setLocation("");
         setErrorMessage("");
 
+        toggleModal();
+
     }
 
 
     const days = [
-        {value: "sun", text: "الأحد", column: "col-start-7"},
-        {value: "mon", text: "الاثنين", column: "col-start-6"},
-        {value: "tue", text: "الثلاثاء", column: "col-start-5"},
-        {value: "wed", text: "الأربعاء", column: "col-start-4"},
-        {value: "thu", text: "الخميس", column: "col-start-3"},
-        {value: "fri", text: "الجمعة", column: "col-start-2"},
-        {value: "sat", text: "السبت", column: "col-start-1"},
+        {value: "sun", text: "الأحد", column: "7"},
+        {value: "mon", text: "الاثنين", column: "6"},
+        {value: "tue", text: "الثلاثاء", column: "5"},
+        {value: "wed", text: "الأربعاء", column: "4"},
+        {value: "thu", text: "الخميس", column: "3"},
+        {value: "fri", text: "الجمعة", column: "2"},
+        {value: "sat", text: "السبت", column: "1"},
     ];
 
   return (
@@ -72,7 +74,7 @@ export default function AddCourseForm({addClass, toggle}) {
         </label>
         
         <label htmlFor="convert" className='form-convert-label' dir='rtl'>لا تقم بتحويل الوقت إلى أوقات رمضان
-            <input type="checkbox" id="convert" className="form-convert-checkbox" dir='rtl' onChange={() => toggle()}/>
+            <input type="checkbox" id="convert" className="form-convert-checkbox" dir='rtl' onChange={() => toggleNotRamadan}/>
         </label>
 
         <button className="form-button" type='submit' dir='rtl'>أضف المادة</button>

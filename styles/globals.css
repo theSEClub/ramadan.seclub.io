@@ -10,8 +10,9 @@ ul {
 }
 
 .schedule-container {
+    position: relative;
     display: grid;
-    grid-template-columns: 5% auto;
+    grid-template-columns: max(5%, 75px) auto;
     grid-template-rows: auto;
     gap: 1px 1px;
     grid-template-areas:
@@ -38,9 +39,9 @@ ul {
     content: "";
     position: absolute;
     width: 1px;
-    height: 210%;
+    height: 97%;
     background-color: lightgray;
-    z-index: -1;
+    z-index: 1;
     display: block;
 
 }
@@ -51,6 +52,7 @@ ul {
 
 .timeslots-container {
     grid-area: timeslots-container;
+    margin-left: 0.5rem;
 }
 
 .timeslots {
@@ -66,7 +68,7 @@ ul {
     font-size: 20px;
     color: gray;
     padding-right: 30px;
-    left: 0;
+    /* left: 0; */
 } 
 
 
@@ -76,7 +78,7 @@ ul {
     width: 100%;
     height: 1px;
     background-color: lightgray;
-    z-index: -1;
+    z-index: 1;
     left: 0px;
 
 
@@ -88,7 +90,6 @@ ul {
     grid-template-rows: repeat(24, 1fr);
     grid-area: main;
     position: relative;
-    z-index: -1;
 }
 
 .slot {
@@ -119,11 +120,38 @@ body.active-modal {
     overflow-y: hidden;
 }
 
+body.active-modal .timeslots li::after {
+    z-index: -1;
+}
+
+body.active-modal .weekdays li::after {
+    z-index: -1;
+}
+
+body.active-modal .schedule-container{
+    z-index: -1;
+}
+
 .btn-modal {
-    padding: 10px 20px;
-    display: block;
-    margin: 100px auto 0;
-    font-size: 18px;
+    font-size: 1rem;
+    padding: 1em 0.5em;
+    background-color: rgb(225, 243, 244);
+    color: rgb(126, 203, 202);
+    cursor: pointer;
+    transition: transform ease-in-out 200ms;
+    -webkit-transition: transform ease-in-out 200ms;
+    -moz-transition: transform ease-in-out 200ms;
+    -ms-transition: transform ease-in-out 200ms;
+    -o-transition: transform ease-in-out 200ms;
+}
+
+.btn-modal:hover, .btn-modal:focus{
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    box-shadow: 1px 3px 5px rgba(0,0,0,0.2);
 }
 
 .modal, .overlay {
@@ -147,10 +175,14 @@ body.active-modal {
     transform: translate(-50%, -50%);
     line-height: 1.4;
     background: #f1f1f1;
-    padding: 14px 28px;
-    border-radius: 3px;
+    padding: 1.5rem 28px;
+    border-radius: 25px;
     max-width: 600px;
     min-width: 300px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
 }
 
 .close-modal {
@@ -158,4 +190,5 @@ body.active-modal {
     top: 10px;
     right: 10px;
     padding: 5px 7px;
+    
 }

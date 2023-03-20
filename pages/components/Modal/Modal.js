@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { RxCross2 } from 'react-icons/rx';
+import { RxPlus } from 'react-icons/rx';
+import { TbTrash } from 'react-icons/tb';
 import AddCourseForm from "../AddCourse/AddCourseForm";
 
-export default function Modal({addClass, toggle}) {
+export default function Modal({openText, addClass, toggleNotRamadan}) {
   const [modal, setModal] = useState(false);
 
-  const toggleModal = () => {
+  function toggleModal() {
     setModal(!modal);
   };
 
@@ -18,17 +21,21 @@ export default function Modal({addClass, toggle}) {
 
   return (
     <>
-      <button onClick={toggleModal} className="btn-modal">
-        Open
+      <button onClick={() => toggleModal()} className="btn-modal border-none rounded-xl ">
+        {openText} {(openText === "إضافة مادة") ? <RxPlus /> : <TbTrash />}
       </button>
 
       {modal && (
         <div className="modal">
-          <div onClick={toggleModal} className="overlay"></div>
+          <div onClick={() => toggleModal()} className="overlay"></div>
           <div className="modal-content">
-            <AddCourseForm addClass={addClass} toggle={toggle}/>
-            <button className="close-modal" onClick={toggleModal}>
-              CLOSE
+          {(openText === "إضافة مادة") 
+            ? <AddCourseForm addClass={addClass} toggleNotRamadan={toggleNotRamadan} toggleModal={toggleModal}/>
+            : <TbTrash />
+          }
+            <button className="close-modal" onClick={() => toggleModal()}>
+              <RxCross2 />
+              إغلاق
             </button>
           </div>
         </div>

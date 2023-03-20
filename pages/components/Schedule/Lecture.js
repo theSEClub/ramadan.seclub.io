@@ -32,7 +32,7 @@ export default function Lecture({classTitle, time, endTime, day, duration, margi
       //     <span style={{fontSize: '12px'}}>{location}</span>
       // </div>
       : <div 
-          className={`absolute rounded-md z-10 text-white text-xs font-bold text-center w-[12.5vw]`}
+          className={`absolute rounded-md z-10 text-white text-xs font-bold text-center w-[11vw]`}
           style={{
             backgroundColor: `${color}`,
             borderLeft: `4px solid ${colorAccent}`,
