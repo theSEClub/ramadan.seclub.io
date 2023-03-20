@@ -15,20 +15,22 @@ export default function Lecture({classTitle, time, endTime, day, duration, margi
 
     <>
       {notRamadan 
-      ? <div 
-        className={`absolute rounded-md z-10 text-white text-xs font-bold text-center w-[12.5vw]`}
-        style={{
-          backgroundColor: `${color}`,
-          borderLeft: `4px solid ${colorAccent}`,
-          gridRow: `${ramadanStartTime}`,
-          gridColumn: `${day}`,
-          height: `${ramadanDuration}px`,
-          marginTop: `${margin}px`
-        }}
-        >
-          <span style={{fontSize: '20px'}}>{classTitle}</span>
-          <span style={{fontSize: '12px'}}>{location}</span>
-      </div>
+      ? <></>
+      // NOT ready yet ☺ 
+      // ? <div 
+      //   className={`absolute rounded-md z-10 text-white text-xs font-bold text-center w-[12.5vw]`}
+      //   style={{
+      //     backgroundColor: `${color}`,
+      //     borderLeft: `4px solid ${colorAccent}`,
+      //     gridRow: `${ramadanStartTime}`,
+      //     gridColumn: `${day}`,
+      //     height: `${ramadanDuration}px`,
+      //     marginTop: `${margin}px`
+      //   }}
+      //   >
+      //     <span style={{fontSize: '20px'}}>{classTitle}</span>
+      //     <span style={{fontSize: '12px'}}>{location}</span>
+      // </div>
       : <div 
           className={`absolute rounded-md z-10 text-white text-xs font-bold text-center w-[12.5vw]`}
           style={{
