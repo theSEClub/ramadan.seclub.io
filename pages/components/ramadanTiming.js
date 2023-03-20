@@ -61,7 +61,7 @@ function getNewDuration(duration) {
 }
 
 
-function getRamadanTime(start, end, dayOfWeek) {
+export function getRamadanTime(start, end, dayOfWeek) {
   // Global variables
   const errormsg = "The time requested is not a standard time. The faculty members with arrangement with the students has the to propose a suitable timing for all of them ";
   const lecturesTime = { 
@@ -96,7 +96,7 @@ function getRamadanTime(start, end, dayOfWeek) {
   }
  
 //get new period for the lecture
-newduration = getNewDuration(duration);
+const newduration = getNewDuration(duration);
 //if period of lecture is not among standard period
   if (newduration === 0){
     return errormsg;
