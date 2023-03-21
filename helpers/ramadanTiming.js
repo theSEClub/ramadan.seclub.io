@@ -57,7 +57,7 @@ function getNewDuration(duration) {
   return allowedDurations[duration] || 0;
 }
 
-function getRamadanTime(start, end, dayOfWeek) {
+export function getRamadanTime(start, end, dayOfWeek) {
   // Global variables
   const errormsg =
     "The time requested is not a standard time. The faculty members with arrangement with the students has the to propose a suitable timing for all of them ";
@@ -94,7 +94,7 @@ function getRamadanTime(start, end, dayOfWeek) {
   }
 
   //get new period for the lecture
-  newduration = getNewDuration(duration);
+  const newduration = getNewDuration(duration);
   //if period of lecture is not among standard period
   if (newduration === 0) {
     return errormsg;
@@ -107,22 +107,24 @@ function getRamadanTime(start, end, dayOfWeek) {
   return [getStrTime(startDate), getStrTime(endDate)];
 }
 
-//legitimate
-console.log("legitimate");
-console.log(getRamadanTime("09:30", "10:45", "sun"));
-console.log(getRamadanTime("11:00", "12:15", "mon"));
-console.log(getRamadanTime("11:00", "12:15", "sun"));
-console.log(getRamadanTime("16:00", "16:50", "thu"));
-console.log(getRamadanTime("15:30", "16:45", "wed"));
-console.log(getRamadanTime("17:00", "18:15", "mon"));
-console.log(getRamadanTime("13:00", "13:50", "tue"));
+// TEST CASES
 
-console.log("wrong");
-//wrong timing
-console.log(getRamadanTime("13:00", "14:50", "mon"));
-console.log(getRamadanTime("8:30", "08:50", "sun"));
-console.log(getRamadanTime("18:00", "19:50", "thu"));
-console.log(getRamadanTime("18:00", "19:50", "mon"));
-console.log(getRamadanTime("14:00", "08:50", "sun"));
-console.log(getRamadanTime("15:00", "08:50", "mon"));
-console.log(getRamadanTime("09:00", "08:50", "wed"));
+//legitimate
+// console.log("legitimate");
+// console.log(getRamadanTime("09:30", "10:45", "sun"));
+// console.log(getRamadanTime("11:00", "12:15", "mon"));
+// console.log(getRamadanTime("11:00", "12:15", "sun"));
+// console.log(getRamadanTime("16:00", "16:50", "thu"));
+// console.log(getRamadanTime("15:30", "16:45", "wed"));
+// console.log(getRamadanTime("17:00", "18:15", "mon"));
+// console.log(getRamadanTime("13:00", "13:50", "tue"));
+
+// console.log("wrong");
+// //wrong timing
+// console.log(getRamadanTime("13:00", "14:50", "mon"));
+// console.log(getRamadanTime("8:30", "08:50", "sun"));
+// console.log(getRamadanTime("18:00", "19:50", "thu"));
+// console.log(getRamadanTime("18:00", "19:50", "mon"));
+// console.log(getRamadanTime("14:00", "08:50", "sun"));
+// console.log(getRamadanTime("15:00", "08:50", "mon"));
+// console.log(getRamadanTime("09:00", "08:50", "wed"));

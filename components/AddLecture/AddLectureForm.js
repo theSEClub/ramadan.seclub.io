@@ -1,8 +1,11 @@
+import { getRamadanTime } from '@/helpers/ramadanTiming';
 import React, { useEffect, useState } from 'react'
 import DaysInput from './DaysInput';
 import TimeInput from './TimeInput';
 
-export default function AddCourseForm({addClass, toggleIsRamadan, toggleModal}) {
+export default function AddLectureForm({addLecture, toggleModal}) {
+
+    const [isRamadan, setIsRamadan] = useState(true)  
 
     const [classTitle, setClassTitle] = useState("");
     const [selectedDays, setSelectedDays] = useState([]);
@@ -12,6 +15,10 @@ export default function AddCourseForm({addClass, toggleIsRamadan, toggleModal}) 
     const [errorMessage, setErrorMessage] = useState("");
 
     const [clearCheckboxes, setClearCheckboxes] = useState(false);
+
+    // 😅 
+    const malaksErrorMessage = "The time requested is not a standard time. The faculty members with arrangement with the students has the to propose a suitable timing for all of them ";
+
 
     useEffect(() => {
         if(clearCheckboxes){
@@ -26,9 +33,13 @@ export default function AddCourseForm({addClass, toggleIsRamadan, toggleModal}) 
         setSelectedDays(selectedDays.filter(selectedDay => (selectedDay !== e.target.value)));
     }
 
-    function handleAddClass(e) {
+
+    function handleAddLecture(e) {
         e.preventDefault();
+
         if(selectedDays.length === 0) return setErrorMessage("قم باختيار احد الايام");
+
+        // add checks for duration, start, end => not overflow the schedule
 
         // generate random color for the lecture
         const COLORS = [
@@ -41,7 +52,29 @@ export default function AddCourseForm({addClass, toggleIsRamadan, toggleModal}) 
         const colorAccent = COLORS[colorNumber][1];
 
 
-        addClass({classTitle, selectedDays, startTime, endTime, location, color, colorAccent});
+        if (isRamadan) {
+            var ramadanError = false;
+            var returnedValue;
+
+            selectedDays.forEach(day => {
+                returnedValue = getRamadanTime(startTime, endTime, day);
+                if (returnedValue === malaksErrorMessage) {
+                    ramadanError = true;
+                } 
+            })
+
+            if (ramadanError) {
+                return setErrorMessage(malaksErrorMessage);
+            }
+
+            const ramadanStart = returnedValue[0];
+            const ramadanEnd = returnedValue[1];
+
+            addLecture({classTitle, selectedDays, startTime: ramadanStart, endTime: ramadanEnd, location, color, colorAccent});
+
+        } else {
+            addLecture({classTitle, selectedDays, startTime, endTime, location, color, colorAccent});
+        }
 
         // clear states
         setClassTitle("");
@@ -50,12 +83,11 @@ export default function AddCourseForm({addClass, toggleIsRamadan, toggleModal}) 
         setStartTime("");
         setEndTime("");
         setLocation("");
-        setErrorMessage("");
+        setErrorMessage("");  
 
         toggleModal();
 
     }
-
 
     const days = [
         {value: "sun", text: "الأحد", column: "7"},
@@ -68,7 +100,7 @@ export default function AddCourseForm({addClass, toggleIsRamadan, toggleModal}) 
     ];
 
   return (
-    <form className='add-course-form flex flex-col justify-center items-center gap-4 rounded-md' onSubmit={(e) => handleAddClass(e)}>
+    <form className='add-course-form flex flex-col justify-center items-center gap-4 rounded-md' onSubmit={(e) => handleAddLecture(e)}>
         <label htmlFor="class-title" dir="rtl">عنوان المادة 
             <input className='m-4 p-1 border border-neutral-900 rounded-md' id="class-title" type="text" required dir="rtl" value={classTitle} onChange={(e) => setClassTitle(e.target.value)}/>
         </label>
@@ -85,7 +117,7 @@ export default function AddCourseForm({addClass, toggleIsRamadan, toggleModal}) 
         </label>
         
         <label htmlFor="convert" className='form-convert-label' dir='rtl'>لا تقم بتحويل الوقت إلى أوقات رمضان
-            <input type="checkbox" id="convert" className="form-convert-checkbox" dir='rtl' onChange={() => toggleIsRamadan()}/>
+            <input type="checkbox" id="convert" className="form-convert-checkbox" dir='rtl' onChange={() => setIsRamadan(!isRamadan)}/>
         </label>
 
         <button className="form-button" type='submit' dir='rtl'>أضف المادة</button>

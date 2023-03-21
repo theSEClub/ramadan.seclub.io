@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { RxCross2 } from 'react-icons/rx';
 import { RxPlus } from 'react-icons/rx';
 import { TbTrash } from 'react-icons/tb';
-import AddCourseForm from "../AddCourse/AddCourseForm";
+import AddLectureForm from "../AddLecture/AddLectureForm";
+import DeleteLectureForm from "../DeleteLecture/DeleteLectureForm";
 
-export default function Modal({openText, addClass, toggleIsRamadan}) {
+export default function Modal({openText, addLecture, deleteLecture, lectures}) {
   const [modal, setModal] = useState(false);
 
   function toggleModal() {
@@ -30,12 +31,11 @@ export default function Modal({openText, addClass, toggleIsRamadan}) {
           <div onClick={() => toggleModal()} className="overlay"></div>
           <div className="modal-content">
           {(openText === "إضافة مادة") 
-            ? <AddCourseForm addClass={addClass} toggleIsRamadan={toggleIsRamadan} toggleModal={toggleModal}/>
-            : <TbTrash />
+            ? <AddLectureForm addLecture={addLecture} toggleModal={toggleModal}/>
+            : <DeleteLectureForm deleteLecture={deleteLecture} lectures={lectures}/>
           }
             <button className="close-modal" onClick={() => toggleModal()}>
               <RxCross2 />
-              إغلاق
             </button>
           </div>
         </div>
