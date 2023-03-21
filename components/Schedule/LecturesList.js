@@ -1,5 +1,5 @@
 import React from 'react'
-import Class from './Class'
+import LecturesMapper from './LecturesMapper'
 
 export default function LecturesList({lectures}) {
 
@@ -7,7 +7,7 @@ export default function LecturesList({lectures}) {
     <>
         {lectures && <div className="lectures-container">
             {lectures?.map(lecture => (
-                <Class 
+                <LecturesMapper 
                     key={lecture.classTitle + lecture.days + lecture.endTime}
                     classTitle={lecture.classTitle} 
                     startTime={lecture.startTime} 
