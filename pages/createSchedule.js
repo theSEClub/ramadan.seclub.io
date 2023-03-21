@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import Main from '../components/Main';
 import YourSchedule from '../components/Schedule/YourSchedule';
 
-export default function createschedule() {
+export default function createSchedule() {
 
 
 
