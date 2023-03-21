@@ -90,37 +90,44 @@ export default function AddLectureForm({addLecture, toggleModal}) {
     }
 
     const days = [
-        {value: "sun", text: "الأحد", column: "7"},
-        {value: "mon", text: "الاثنين", column: "6"},
-        {value: "tue", text: "الثلاثاء", column: "5"},
-        {value: "wed", text: "الأربعاء", column: "4"},
-        {value: "thu", text: "الخميس", column: "3"},
-        {value: "fri", text: "الجمعة", column: "2"},
-        {value: "sat", text: "السبت", column: "1"},
+        {value: "sun", text: "الأحد"},
+        {value: "mon", text: "الاثنين"},
+        {value: "tue", text: "الثلاثاء"},
+        {value: "wed", text: "الأربعاء"},
+        {value: "thu", text: "الخميس"},
+        {value: "fri", text: "الجمعة"},
+        {value: "sat", text: "السبت"},
     ];
 
   return (
     <form className='add-course-form flex flex-col justify-center items-center gap-4 rounded-md' onSubmit={(e) => handleAddLecture(e)}>
-        <label htmlFor="class-title" dir="rtl">عنوان المادة 
-            <input className='m-4 p-1 border border-neutral-900 rounded-md' id="class-title" type="text" required dir="rtl" value={classTitle} onChange={(e) => setClassTitle(e.target.value)}/>
-        </label>
+        <div className='flex w-full'>
+            <label htmlFor="class-title" className='text-[#7f5ce5]' dir="rtl">عنوان المادة 
+                <input className='text-[#7f5ce5] m-4 mr-14 py-1 px-5 border border-[#7f5ce5] rounded-md outline-none' id="class-title" type="text" required dir="rtl" value={classTitle} onChange={(e) => setClassTitle(e.target.value)}/>
+            </label>
+        </div>
 
         <div className='grid grid-cols-7 grid-rows-1 gap-2'>
             <DaysInput days={days} onChange={handleCheckbox}/>
         </div>
 
         <TimeInput value={startTime} text={"بداية المحاضرة"} onChange={setStartTime}/>
+
         <TimeInput value={endTime} text={"نهاية المحاضرة"} onChange={setEndTime}/>
 
-        <label htmlFor="location" className='form-location-label' dir='rtl'>مكان المحاضرة
-            <input type="text" id="location" className="form-location-label m-4 p-1 border border-neutral-900 rounded-md"  placeholder='اختياري' dir='rtl' value={location} onChange={(e) => setLocation(e.target.value)}/>
-        </label>
+        <div className='flex w-full'>
+            <label htmlFor="location" className='text-[#7f5ce5]' dir='rtl'>مكان المحاضرة
+                <input type="text" id="location" className='text-[#7f5ce5] m-4 mr-9 py-1 px-5 border border-[#7f5ce5] rounded-md outline-none' value={location} onChange={(e) => setLocation(e.target.value)}/>
+            </label>
+        </div>
         
-        <label htmlFor="convert" className='form-convert-label' dir='rtl'>لا تقم بتحويل الوقت إلى أوقات رمضان
-            <input type="checkbox" id="convert" className="form-convert-checkbox" dir='rtl' onChange={() => setIsRamadan(!isRamadan)}/>
-        </label>
+        <div className='flex w-full'>
+            <label htmlFor="convert" className='text-[#7f5ce5]' dir='rtl'>لا تقم بتحويل الوقت إلى أوقات رمضان
+                <input type="checkbox" id="convert" className="m-4 mr-10" dir='rtl' onChange={() => setIsRamadan(!isRamadan)}/>
+            </label>
+        </div>
 
-        <button className="form-button" type='submit' dir='rtl'>أضف المادة</button>
+        <button className="form-button text-base m-4 py-2 px-5 border-none rounded-lg outline-none" type='submit' dir='rtl'>أضف المادة</button>
 
         {errorMessage && <div>{errorMessage}</div>}
     </form>
