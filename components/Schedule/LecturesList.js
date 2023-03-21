@@ -1,7 +1,7 @@
 import React from 'react'
 import Class from './Class'
 
-export default function LecturesList({lectures, notRamadan}) {
+export default function LecturesList({lectures, isRamadan}) {
 
   return (
     <>
@@ -14,7 +14,9 @@ export default function LecturesList({lectures, notRamadan}) {
                     endTime={lecture.endTime} 
                     days={lecture.selectedDays} 
                     location={lecture.location}
-                    notRamadan={notRamadan}/>
+                    color={lecture.color}
+                    colorAccent={lecture.colorAccent}
+                    isRamadan={isRamadan}/>
             ))}
         </div>}
     </>

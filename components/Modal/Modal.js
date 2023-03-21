@@ -4,7 +4,7 @@ import { RxPlus } from 'react-icons/rx';
 import { TbTrash } from 'react-icons/tb';
 import AddCourseForm from "../AddCourse/AddCourseForm";
 
-export default function Modal({openText, addClass, toggleNotRamadan}) {
+export default function Modal({openText, addClass, toggleIsRamadan}) {
   const [modal, setModal] = useState(false);
 
   function toggleModal() {
@@ -30,7 +30,7 @@ export default function Modal({openText, addClass, toggleNotRamadan}) {
           <div onClick={() => toggleModal()} className="overlay"></div>
           <div className="modal-content">
           {(openText === "إضافة مادة") 
-            ? <AddCourseForm addClass={addClass} toggleNotRamadan={toggleNotRamadan} toggleModal={toggleModal}/>
+            ? <AddCourseForm addClass={addClass} toggleIsRamadan={toggleIsRamadan} toggleModal={toggleModal}/>
             : <TbTrash />
           }
             <button className="close-modal" onClick={() => toggleModal()}>

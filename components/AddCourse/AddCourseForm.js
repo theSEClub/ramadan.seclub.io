@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import DaysInput from './DaysInput';
 import TimeInput from './TimeInput';
 
-export default function AddCourseForm({addClass, toggleNotRamadan, toggleModal}) {
+export default function AddCourseForm({addClass, toggleIsRamadan, toggleModal}) {
 
     const [classTitle, setClassTitle] = useState("");
     const [selectedDays, setSelectedDays] = useState([]);
@@ -30,7 +30,18 @@ export default function AddCourseForm({addClass, toggleNotRamadan, toggleModal})
         e.preventDefault();
         if(selectedDays.length === 0) return setErrorMessage("قم باختيار احد الايام");
 
-        addClass({classTitle, selectedDays, startTime, endTime, location});
+        // generate random color for the lecture
+        const COLORS = [
+            ["#80ffd4", "#42a683"],
+            ["#d0a3fa", "#a642a4"],
+            ["#a3dcfa", "#4247a6"]
+        ];
+        const colorNumber = Math.floor(Math.random() * 10) % 3;
+        const color = COLORS[colorNumber][0];
+        const colorAccent = COLORS[colorNumber][1];
+
+
+        addClass({classTitle, selectedDays, startTime, endTime, location, color, colorAccent});
 
         // clear states
         setClassTitle("");
@@ -74,7 +85,7 @@ export default function AddCourseForm({addClass, toggleNotRamadan, toggleModal})
         </label>
         
         <label htmlFor="convert" className='form-convert-label' dir='rtl'>لا تقم بتحويل الوقت إلى أوقات رمضان
-            <input type="checkbox" id="convert" className="form-convert-checkbox" dir='rtl' onChange={() => toggleNotRamadan}/>
+            <input type="checkbox" id="convert" className="form-convert-checkbox" dir='rtl' onChange={() => toggleIsRamadan()}/>
         </label>
 
         <button className="form-button" type='submit' dir='rtl'>أضف المادة</button>
