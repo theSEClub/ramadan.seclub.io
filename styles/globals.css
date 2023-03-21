@@ -20,6 +20,7 @@ ul {
         "timeslots-container main";
 
     overflow-x: scroll;
+    overflow-y: hidden;
 
 }
 
