@@ -124,9 +124,9 @@ ul {
 
 }
 
-@media all and (max-width: 684px){
+/* @media all and (max-width: 684px){
     .timeslots li{color: red;}
-}
+} */
 
 
 /* MODAL */
