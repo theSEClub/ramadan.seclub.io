@@ -1,7 +1,14 @@
 import { getRamadanTime } from '@/helpers/ramadanTiming';
 import React, { useEffect, useState } from 'react'
+import { calculateDuration } from '../Schedule/Lecture';
 import DaysInput from './DaysInput';
 import TimeInput from './TimeInput';
+
+
+function getHourFromTime(time){
+    const timeArray = time.split(':');
+    return timeArray[0];
+}
 
 export default function AddLectureForm({addLecture, toggleModal}) {
 
@@ -40,9 +47,12 @@ export default function AddLectureForm({addLecture, toggleModal}) {
     function handleAddLecture(e) {
         e.preventDefault();
 
-        if(selectedDays.length === 0) return setErrorMessage(selectedDaysErrorMessage);
+        // check entered information
+        if (selectedDays.length === 0) return setErrorMessage(selectedDaysErrorMessage);
+        if (calculateDuration(startTime, endTime) < 30) return setErrorMessage(durationErrorMessage);
+        if (calculateDuration(startTime, endTime) > 240) return setErrorMessage(durationErrorMessage);
+        if (getHourFromTime(endTime) >= 6 && getHourFromTime(startTime) < 6 ) return setErrorMessage(durationErrorMessage);
 
-        // add checks for duration, start, end => not overflow the schedule
 
         // generate random color for the lecture
         const COLORS = [
