@@ -1,16 +1,10 @@
 /* @tailwind base; */
 /* the above line is commented out to preserve Reem's CSS styles */
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
 
-@import url('https://fonts.googleapis.com/css2?family=Mirza:wght@400;700&display=swap');
+@import "tailwindcss/components";
 
-:root{
-    --purple: hsla(260, 81%, 63%, 1);
-    --light_purple: hsla(247, 100%, 96%, 1);
-    --green: hsla(178, 52%, 60%, 1);
-    --light_green: hsl(183, 46%, 92%);
-}
+@import "tailwindcss/utilities";
 
 ul {
     list-style: none;
@@ -124,9 +118,9 @@ ul {
 
 }
 
-/* @media all and (max-width: 684px){
+@media all and (max-width: 684px){
     .timeslots li{color: red;}
-} */
+}
 
 
 /* MODAL */
@@ -149,23 +143,28 @@ body.active-modal .schedule-container{
 
 .btn-modal {
     font-size: 1rem;
-    padding: 1em 0.5em;
-    background-color: var(--light_green);
-    color: var(--green);
+    padding: 1em 5em;
+    background-color: rgb(225, 243, 244);
+    color: rgb(126, 203, 202);
     cursor: pointer;
     transition: transform ease-in-out 200ms, box-shadow ease-in-out 200ms;
     -webkit-transition: transform ease-in-out 200ms, box-shadow ease-in-out 200ms;
     -moz-transition: transform ease-in-out 200ms, box-shadow ease-in-out 200ms;
     -ms-transition: transform ease-in-out 200ms, box-shadow ease-in-out 200ms;
     -o-transition: transform ease-in-out 200ms, box-shadow ease-in-out 200ms;
+    width: 1000px;
+    left: 25px;
+    top: 1050px;
+    border-radius:500px;
 }
 
 .btn-modal:hover, .btn-modal:focus{
-    transform: scale(1.07);
-    -webkit-transform: scale(1.07);
-    -moz-transform: scale(1.07);
-    -ms-transform: scale(1.07);
-    -o-transform: scale(1.07);
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    box-shadow: 1px 3px 5px rgba(0,0,0,0.2);
 }
 
 .modal, .overlay {
@@ -178,23 +177,18 @@ body.active-modal .schedule-container{
     position: fixed;
 }
 
-.modal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .overlay {
     background: rgba(49,49,49,0.8);
 }
 
 .modal-content {
     position: absolute;
-    height: fit-content;
+    top: 40%;
     left: 50%;
+    transform: translate(-50%, -50%);
     line-height: 1.4;
     background: rgb(255, 255, 255);
-    padding: 1.5rem 1.5rem;
+    padding: 1.5rem 28px;
     border-radius: 25px;
     max-width: 600px;
     min-width: 300px;
@@ -202,19 +196,15 @@ body.active-modal .schedule-container{
     -moz-border-radius: 25px;
     -ms-border-radius: 25px;
     -o-border-radius: 25px;
-    -webkit-transform: translate(-50%, 0);
-    -moz-transform: translate(-50%, 0);
-    -ms-transform: translate(-50%, 0);
-    -o-transform: translate(-50%, 0);
 }
 
 .close-modal {
     position: absolute;
-    top: 1.5rem;
-    left: 1.5rem;
+    top: 10px;
+    left: 10px;
     padding: 5px 7px;
-    background-color: var(--light_purple);
-    color: var(--purple);
+    background-color: #eeedfd;
+    color: #7f5ce5;
     cursor: pointer;
     border: none;
     outline: none;
@@ -237,14 +227,13 @@ body.active-modal .schedule-container{
 /* ADD LECTURE FORM */
 
 .form-time-input::-webkit-calendar-picker-indicator{
-    /* by using filter generator sinice color property doesn't work on it */
-    filter: invert(39%) sepia(31%) saturate(7243%) hue-rotate(243deg) brightness(97%) contrast(92%);
+    display: none;
 }
 
 .form-button {
     font-size: 1rem;
-    background-color: var(--light_purple);
-    color: var(--purple);
+    background-color: #eeedfd;
+    color: #7f5ce5;
     cursor: pointer;
     transition: transform ease-in-out 200ms, box-shadow ease-in-out 200ms;
     -webkit-transition: transform ease-in-out 200ms, box-shadow ease-in-out 200ms;
@@ -279,6 +268,15 @@ body.active-modal .schedule-container{
     -ms-transform: scale(1.25);
     -o-transform: scale(1.25);
 }
+/* Header */
+.btn{
+    height: 2.4rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    min-height: 2rem;
+    font-weight: 425;
+}
+
 .btn-primary:hover, .btn-primary.btn-active {
     --tw-border-opacity: 10;
       border-radius:40px;
@@ -290,6 +288,11 @@ body.active-modal .schedule-container{
     background-color: #8854ed;
     
 }
+.text-xl {
+    font-size: 1.1rem;
+}
+
+
 /* Footer */
 .footer{
     justify-content: center;background-color: #8854ED; 
@@ -400,4 +403,6 @@ border-radius: 500px;
     top: -3px;
 
  }
+
+
 
