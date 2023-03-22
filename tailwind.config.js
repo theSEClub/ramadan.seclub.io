@@ -10,6 +10,9 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      'mirza': ['"Mirza"', 'cursive'],
+    },
   },
   plugins: [],
 }
