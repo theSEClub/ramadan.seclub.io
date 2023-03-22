@@ -27,7 +27,7 @@ export default function Modal({openText, addLecture, deleteLecture, lectures}) {
       </button>
 
       {modal && (
-        <div className="modal font-mirza">
+        <div className="modal font-mirza overflow-y-scroll">
           <div onClick={() => toggleModal()} className="overlay"></div>
           <div className="modal-content">
           {(openText === "إضافة مادة") 

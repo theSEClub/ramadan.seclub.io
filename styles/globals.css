@@ -179,15 +179,20 @@ body.active-modal .schedule-container{
     position: fixed;
 }
 
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .overlay {
     background: rgba(49,49,49,0.8);
 }
 
 .modal-content {
     position: absolute;
-    top: 40%;
+    height: fit-content;
     left: 50%;
-    transform: translate(-50%, -50%);
     line-height: 1.4;
     background: rgb(255, 255, 255);
     padding: 1.5rem 28px;
@@ -198,6 +203,10 @@ body.active-modal .schedule-container{
     -moz-border-radius: 25px;
     -ms-border-radius: 25px;
     -o-border-radius: 25px;
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
 }
 
 .close-modal {
