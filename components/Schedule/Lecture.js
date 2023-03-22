@@ -53,7 +53,6 @@ export default function Lecture({classTitle, startTime, endTime, day, color, loc
       <div 
           className={`absolute rounded-md z-10 text-white text-xs font-bold text-center ml-[0.5vw] w-[10vw] min-w-[65px] flex flex-col items-center justify-around`}
           style={{
-            color: `${color.text}`,
             backgroundColor: `${color.background}`,
             borderLeft: `4px solid ${color.accent}`,
             gridRow: `${calculateRow(startTime)}`,
