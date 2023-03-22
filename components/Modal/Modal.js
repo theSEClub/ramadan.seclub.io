@@ -32,7 +32,7 @@ export default function Modal({openText, addLecture, deleteLecture, lectures}) {
           <div className="modal-content">
           {(openText === "إضافة مادة") 
             ? <AddLectureForm addLecture={addLecture} toggleModal={toggleModal}/>
-            : <DeleteLectureForm deleteLecture={deleteLecture} lectures={lectures}/>
+            : <DeleteLectureForm deleteLecture={deleteLecture} lectures={lectures} toggleModal={toggleModal}/>
           }
             <button className="close-modal" onClick={() => toggleModal()}>
               <RxCross2 />
