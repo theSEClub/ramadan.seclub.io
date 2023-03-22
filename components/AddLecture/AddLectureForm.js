@@ -18,6 +18,9 @@ export default function AddLectureForm({addLecture, toggleModal}) {
 
     // 😅 
     const malaksErrorMessage = "The time requested is not a standard time. The faculty members with arrangement with the students has the to propose a suitable timing for all of them ";
+    const arabicErrorMessage = "عذراً. إن تحويل المحاضرة للأوقات الرمضانية غير متاح للمواعيد غير المسجلة في الجدول المرسل.";
+    const durationErrorMessage = "الرجاء اختيار أوقات صحيحة";
+    const selectedDaysErrorMessage = "الرجاء القيام باختيار أحد الأيام";
 
 
     useEffect(() => {
@@ -37,7 +40,7 @@ export default function AddLectureForm({addLecture, toggleModal}) {
     function handleAddLecture(e) {
         e.preventDefault();
 
-        if(selectedDays.length === 0) return setErrorMessage("قم باختيار احد الايام");
+        if(selectedDays.length === 0) return setErrorMessage(selectedDaysErrorMessage);
 
         // add checks for duration, start, end => not overflow the schedule
 
@@ -64,7 +67,7 @@ export default function AddLectureForm({addLecture, toggleModal}) {
             })
 
             if (ramadanError) {
-                return setErrorMessage(malaksErrorMessage);
+                return setErrorMessage(arabicErrorMessage);
             }
 
             const ramadanStart = returnedValue[0];
@@ -117,7 +120,7 @@ export default function AddLectureForm({addLecture, toggleModal}) {
 
         <div className='flex w-full'>
             <label htmlFor="location" className='text-[#7f5ce5]' dir='rtl'>مكان المحاضرة
-                <input type="text" id="location" className='text-[#7f5ce5] m-4 mr-9 py-1 px-5 border border-[#7f5ce5] rounded-md outline-none' value={location} onChange={(e) => setLocation(e.target.value)}/>
+                <input type="text" id="location" className='text-[#7f5ce5] m-4 mr-9 py-1 px-5 border border-[#7f5ce5] rounded-md outline-none' placeholder='اختياري' value={location} onChange={(e) => setLocation(e.target.value)}/>
             </label>
         </div>
         
@@ -129,7 +132,7 @@ export default function AddLectureForm({addLecture, toggleModal}) {
 
         <button className="form-button text-base m-4 py-2 px-5 border-none rounded-lg outline-none" type='submit' dir='rtl'>أضف المادة</button>
 
-        {errorMessage && <div>{errorMessage}</div>}
+        {errorMessage && <div className='text-red-500 text-base text-center'>{errorMessage}</div>}
     </form>
   )
 }

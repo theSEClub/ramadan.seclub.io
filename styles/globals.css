@@ -3,6 +3,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Mirza:wght@400;700&display=swap');
+
+:root{
+    --purple: hsla(260, 81%, 63%, 1);
+    --light_purple: hsla(247, 100%, 96%, 1);
+    --green: hsla(178, 52%, 60%, 1);
+    --light_green: hsl(183, 46%, 92%);
+}
+
 ul {
     list-style: none;
     padding: 0px;
@@ -141,8 +150,8 @@ body.active-modal .schedule-container{
 .btn-modal {
     font-size: 1rem;
     padding: 1em 0.5em;
-    background-color: rgb(225, 243, 244);
-    color: rgb(126, 203, 202);
+    background-color: var(--light_green);
+    color: var(--green);
     cursor: pointer;
     transition: transform ease-in-out 200ms, box-shadow ease-in-out 200ms;
     -webkit-transition: transform ease-in-out 200ms, box-shadow ease-in-out 200ms;
@@ -196,8 +205,8 @@ body.active-modal .schedule-container{
     top: 10px;
     left: 10px;
     padding: 5px 7px;
-    background-color: #eeedfd;
-    color: #7f5ce5;
+    background-color: var(--light_purple);
+    color: var(--purple);
     cursor: pointer;
     border: none;
     outline: none;
@@ -220,13 +229,14 @@ body.active-modal .schedule-container{
 /* ADD LECTURE FORM */
 
 .form-time-input::-webkit-calendar-picker-indicator{
-    display: none;
+    /* by using filter generator sinice color property doesn't work on it */
+    filter: invert(39%) sepia(31%) saturate(7243%) hue-rotate(243deg) brightness(97%) contrast(92%);
 }
 
 .form-button {
     font-size: 1rem;
-    background-color: #eeedfd;
-    color: #7f5ce5;
+    background-color: var(--light_purple);
+    color: var(--purple);
     cursor: pointer;
     transition: transform ease-in-out 200ms, box-shadow ease-in-out 200ms;
     -webkit-transition: transform ease-in-out 200ms, box-shadow ease-in-out 200ms;
