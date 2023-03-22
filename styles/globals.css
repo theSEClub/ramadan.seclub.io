@@ -279,3 +279,125 @@ body.active-modal .schedule-container{
     -ms-transform: scale(1.25);
     -o-transform: scale(1.25);
 }
+.btn-primary:hover, .btn-primary.btn-active {
+    --tw-border-opacity: 10;
+      border-radius:40px;
+      border-color:#ab8bea!important;
+      font-family: 'Arabic Typesetting';
+      font-weight: normal;
+      font-size:1.8rem;
+    
+    background-color: #8854ed;
+    
+}
+/* Footer */
+.footer{
+    justify-content: center;background-color: #8854ED; 
+    font-family: 'Arabic Typesetting';
+   font-size: 1.7rem;
+     
+}
+/* Icons */
+ .Calendar{
+    position: absolute;
+    left: -301px;
+    top: 93px;
+ }
+.Helal{
+    position: absolute;
+    left: 974px;
+    top: -5px;
+    position: absolute;
+ }
+ /* Fonts */
+ .text-\[\#7f5ce5\]{
+    position: absolute;
+   width: 764px;
+   height: 84px;
+   left: 513px;
+   top: 352px;
+
+   font-family: 'Arabic Typesetting';
+   font-style: normal;
+   font-weight: 950;
+   font-size: 145px;
+   line-height: 30px;
+   /* or 58% */
+  text-align: right;
+ }
+ 
+ .text-\[\#7f5ce6\]{
+    position: absolute;
+width: 592px;
+height: 84px;
+left: 10px;
+top: 1118px;
+color: #63CECB;
+
+font-family: 'Arabic Typesetting';
+   font-style: normal;
+   font-weight: 950;
+   font-size: 145px;
+   
+line-height: none;
+/* or 58% */
+text-align: right;
+
+ }
+
+ .text-\[\#7f5ce7\] {
+    position: absolute;
+width: 539px;
+height: 201px;
+left: 759px;
+top: 434px;
+
+font-family: 'Arabic Typesetting';
+font-style: normal;
+font-weight: 400;
+font-size: 48px;
+line-height: 67px;
+/* or 140% */
+
+text-align: right;
+
+color: #222222;
+ }
+ .text-\[\#7f5ce8\] {
+    position: absolute;
+   width: 458px;
+   height: 183px;
+   left: 200px;
+   top: 1262px;
+    font-family: 'Arabic Typesetting';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 67px;
+    text-align: center;
+    color: #222222;
+}
+
+ /* Rectangles */
+ /* .btn-modal{
+    position: absolute;
+width: 774px;
+height: 285px;
+left: 25px;
+top: 1026px;
+
+background: rgba(99, 206, 203, 0.22);
+border-radius: 500px;
+ } */
+ 
+
+ /* Logos */
+ .menu[class*=" px-"]:not(.menu[class*=" px-0"]) li > *, .menu[class^="px-"]:not(.menu[class^="px-0"]) li > *, .menu[class*=" p-"]:not(.menu[class*=" p-0"]) li > *, .menu[class^="p-"]:not(.menu[class^="p-0"]) li > * {
+    position: absolute;
+    width: 248px;
+    height: 136px;
+    left: 1192px;
+    top: -3px;
+
+ }
+
