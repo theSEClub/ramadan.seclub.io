@@ -112,10 +112,10 @@ export default function AddLectureForm({addLecture, toggleModal}) {
     ];
 
   return (
-    <form className='add-course-form flex flex-col justify-center items-center gap-4 rounded-md' onSubmit={(e) => handleAddLecture(e)}>
+    <form className='add-course-form flex flex-col justify-center items-center gap-4 mt-6 rounded-md' onSubmit={(e) => handleAddLecture(e)}>
         <div className='flex w-full'>
             <label htmlFor="class-title" className='text-[#7f5ce5]' dir="rtl">عنوان المادة 
-                <input className='text-[#7f5ce5] m-4 mr-14 py-1 px-5 border border-[#7f5ce5] rounded-md outline-none' id="class-title" type="text" required dir="rtl" value={classTitle} onChange={(e) => setClassTitle(e.target.value)}/>
+                <input className='text-[#7f5ce5] my-4 mr-8 py-1 px-5 border border-[#7f5ce5] rounded-md outline-none' id="class-title" type="text" required dir="rtl" value={classTitle} onChange={(e) => setClassTitle(e.target.value)}/>
             </label>
         </div>
 
@@ -129,17 +129,17 @@ export default function AddLectureForm({addLecture, toggleModal}) {
 
         <div className='flex w-full'>
             <label htmlFor="location" className='text-[#7f5ce5]' dir='rtl'>مكان المحاضرة
-                <input type="text" id="location" className='text-[#7f5ce5] m-4 mr-9 py-1 px-5 border border-[#7f5ce5] rounded-md outline-none' placeholder='اختياري' value={location} onChange={(e) => setLocation(e.target.value)}/>
+                <input type="text" id="location" className='text-[#7f5ce5] my-4 mr-4 py-1 px-5 border border-[#7f5ce5] rounded-md outline-none' placeholder='اختياري' value={location} onChange={(e) => setLocation(e.target.value)}/>
             </label>
         </div>
         
         <div className='flex w-full'>
             <label htmlFor="convert" className='text-[#7f5ce5]' dir='rtl'>لا تقم بتحويل الوقت إلى أوقات رمضان
-                <input type="checkbox" id="convert" className="m-4 mr-10" dir='rtl' onChange={() => setIsRamadan(!isRamadan)}/>
+                <input type="checkbox" id="convert" className="my-4 mr-2" dir='rtl' onChange={() => setIsRamadan(!isRamadan)}/>
             </label>
         </div>
 
-        <button className="form-button text-base m-4 py-2 px-5 border-none rounded-lg outline-none" type='submit' dir='rtl'>أضف المادة</button>
+        <button className="form-button text-base my-4 py-2 px-5 mb-0 border-none rounded-lg outline-none" type='submit' dir='rtl'>أضف المادة</button>
 
         {errorMessage && <div className='text-red-500 text-base text-center'>{errorMessage}</div>}
     </form>

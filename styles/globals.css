@@ -161,12 +161,11 @@ body.active-modal .schedule-container{
 }
 
 .btn-modal:hover, .btn-modal:focus{
-    transform: scale(1.1);
-    -webkit-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    -o-transform: scale(1.1);
-    box-shadow: 1px 3px 5px rgba(0,0,0,0.2);
+    transform: scale(1.07);
+    -webkit-transform: scale(1.07);
+    -moz-transform: scale(1.07);
+    -ms-transform: scale(1.07);
+    -o-transform: scale(1.07);
 }
 
 .modal, .overlay {
@@ -195,7 +194,7 @@ body.active-modal .schedule-container{
     left: 50%;
     line-height: 1.4;
     background: rgb(255, 255, 255);
-    padding: 1.5rem 28px;
+    padding: 1.5rem 1.5rem;
     border-radius: 25px;
     max-width: 600px;
     min-width: 300px;
@@ -211,8 +210,8 @@ body.active-modal .schedule-container{
 
 .close-modal {
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 1.5rem;
+    left: 1.5rem;
     padding: 5px 7px;
     background-color: var(--light_purple);
     color: var(--purple);
