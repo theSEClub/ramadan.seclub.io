@@ -22,9 +22,9 @@ export default function Modal({openText, addLecture, deleteLecture, lectures}) {
 
   return (
     <>
-      <button onClick={() => toggleModal()} className="btn-modal border-none outline-none rounded-xl font-mirza mx-4">
+      <button onClick={() => toggleModal()} className="btn-modal border-none outline-none rounded-xl font-mirza mx-4 my-2">
         <div className="flex items-center">
-          <span className="pl-6">{openText}</span>
+          <span className="mx-1">{openText}</span>
            {(openText === "إضافة مادة") ? <RxPlus /> : <TbTrash />}
         </div>
       </button>
