@@ -53,7 +53,7 @@ function getNewStartTime(start, lectimes, day) {
 }
 
 function getNewDuration(duration) {
-  const allowedDurations = { 50: 40, 75: 60, 120: 80, 180: 120 };
+  const allowedDurations = { 50: 40, 75: 60, 120: 80, 110:80, 180: 120 , 170:120};
   return allowedDurations[duration] || 0;
 }
 
