@@ -112,7 +112,7 @@ export default function AddLectureForm({addLecture, toggleModal}) {
     ];
 
   return (
-    <form className='add-course-form flex flex-col justify-center items-center gap-4 mt-6 rounded-md' onSubmit={(e) => handleAddLecture(e)}>
+    <form className='add-course-form flex flex-col justify-center items-center gap-4 rounded-md' onSubmit={(e) => handleAddLecture(e)}>
         <div className='flex w-full'>
             <label htmlFor="class-title" className='text-[#7f5ce5]' dir="rtl">عنوان المادة 
                 <input className='text-[#7f5ce5] my-4 mr-8 py-1 px-5 border border-[#7f5ce5] rounded-md outline-none' id="class-title" type="text" required dir="rtl" value={classTitle} onChange={(e) => setClassTitle(e.target.value)}/>

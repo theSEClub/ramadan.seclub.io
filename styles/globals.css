@@ -6,10 +6,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Mirza:wght@400;700&display=swap');
 
 :root{
+    --gray: hsla(0, 0%, 96%, 1);
     --purple: hsla(260, 81%, 63%, 1);
     --light_purple: hsla(247, 100%, 96%, 1);
     --green: hsla(178, 52%, 60%, 1);
     --light_green: hsl(183, 46%, 92%);
+}
+
+body {
+    padding: 0;
+    margin: 0;
 }
 
 ul {
@@ -147,6 +153,10 @@ body.active-modal .schedule-container{
     z-index: -1;
 }
 
+body.active-modal .schedule-container{
+    z-index: -1;
+}
+
 .btn-modal {
     font-size: 1rem;
     padding: 1em 0.5em;
@@ -209,9 +219,6 @@ body.active-modal .schedule-container{
 }
 
 .close-modal {
-    position: absolute;
-    top: 1.5rem;
-    left: 1.5rem;
     padding: 5px 7px;
     background-color: var(--light_purple);
     color: var(--purple);
