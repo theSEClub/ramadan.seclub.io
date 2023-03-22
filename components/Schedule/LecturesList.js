@@ -14,7 +14,6 @@ export default function LecturesList({lectures}) {
                     endTime={lecture.endTime} 
                     days={lecture.selectedDays} 
                     color={lecture.color}
-                    colorAccent={lecture.colorAccent}
                     location={lecture.location}
                     />
             ))}

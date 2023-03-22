@@ -2,7 +2,7 @@ import React from 'react'
 import Lecture from './Lecture';
 
 
-export default function LecturesMapper({classTitle, startTime, endTime, days, location, color, colorAccent, isRamadan, displayError, lecture}) {
+export default function LecturesMapper({classTitle, startTime, endTime, days, location, color, lecture}) {
     
     // this components maps each day in the same added course to a lecture
     // poor naming ☺ 
@@ -17,10 +17,7 @@ export default function LecturesMapper({classTitle, startTime, endTime, days, lo
                 endTime={endTime}
                 day={day}  
                 color={color}
-                colorAccent={colorAccent}
                 location={location}
-                isRamadan={isRamadan}
-                displayError={displayError}
                 lecture={lecture}
                 />
         ))}

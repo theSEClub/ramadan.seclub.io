@@ -56,13 +56,12 @@ export default function AddLectureForm({addLecture, toggleModal}) {
 
         // generate random color for the lecture
         const COLORS = [
-            ["#80ffd4", "#42a683"],
-            ["#d0a3fa", "#a642a4"],
-            ["#a3dcfa", "#4247a6"]
+            {background: "#80ffd4", accent: "#42a683", text: 'white'},
+            {background: "#d0a3fa", accent: "#a642a4", text: 'white'},
+            {background: "#a3dcfa", accent: "#4247a6", text: 'white'},
         ];
         const colorNumber = Math.floor(Math.random() * 10) % 3;
-        const color = COLORS[colorNumber][0];
-        const colorAccent = COLORS[colorNumber][1];
+        const color = COLORS[colorNumber];
 
 
         if (isRamadan) {
@@ -83,10 +82,10 @@ export default function AddLectureForm({addLecture, toggleModal}) {
             const ramadanStart = returnedValue[0];
             const ramadanEnd = returnedValue[1];
 
-            addLecture({classTitle, selectedDays, startTime: ramadanStart, endTime: ramadanEnd, location, color, colorAccent});
+            addLecture({classTitle, selectedDays, startTime: ramadanStart, endTime: ramadanEnd, location, color});
 
         } else {
-            addLecture({classTitle, selectedDays, startTime, endTime, location, color, colorAccent});
+            addLecture({classTitle, selectedDays, startTime, endTime, location, color});
         }
 
         // clear states

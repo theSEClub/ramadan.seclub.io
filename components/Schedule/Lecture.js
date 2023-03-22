@@ -45,7 +45,7 @@ function calculateColumn(day) {
   if (day === 'sat') return 7;
 }
 
-export default function Lecture({classTitle, startTime, endTime, day, color, colorAccent, location}) {
+export default function Lecture({classTitle, startTime, endTime, day, color, location}) {
   
   
   return (
@@ -53,8 +53,9 @@ export default function Lecture({classTitle, startTime, endTime, day, color, col
       <div 
           className={`absolute rounded-md z-10 text-white text-xs font-bold text-center ml-[0.5vw] w-[10vw] min-w-[65px] flex flex-col items-center justify-around`}
           style={{
-            backgroundColor: `${color}`,
-            borderLeft: `4px solid ${colorAccent}`,
+            color: `${color.text}`,
+            backgroundColor: `${color.background}`,
+            borderLeft: `4px solid ${color.accent}`,
             gridRow: `${calculateRow(startTime)}`,
             gridColumn: `${calculateColumn(day)}`,
             height: `${calculateDuration(startTime, endTime)}px`,
