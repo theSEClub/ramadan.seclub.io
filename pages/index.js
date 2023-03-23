@@ -15,8 +15,7 @@ export default function Home() {
         <Image
           src={background}
           alt='calendar'
-          className='main-image col-start-1 w-[100vw] h-auto'
-          style={{ position: 'absolute', top: 0, left: 0, zIndex: -1 }}
+          className='main-image col-start-1 w-[100vw] h-auto absolute top-0 left-0 z-[-1]'
         />
         <Header />
         <Main />
