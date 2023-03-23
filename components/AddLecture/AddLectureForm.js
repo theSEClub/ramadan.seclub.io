@@ -25,7 +25,7 @@ export default function AddLectureForm({addLecture, toggleModal}) {
 
     // 😅 
     const malaksErrorMessage = "The time requested is not a standard time. The faculty members with arrangement with the students has the to propose a suitable timing for all of them ";
-    const arabicErrorMessage = "عذراً. إن تحويل وقت المحاضرة إلى الأوقات الرمضانية غير متاح للمواعيد غير المسجلة في الجدول الرسمي من إدارة الجامعة.";
+    const arabicErrorMessage = "عذراً. إن تحويل المحاضرة للأوقات الرمضانية غير متاح للمواعيد غير المسجلة في الجدول المرسل.";
     const durationErrorMessage = "الرجاء اختيار أوقات صحيحة";
     const selectedDaysErrorMessage = "الرجاء القيام باختيار أحد الأيام";
 
@@ -51,13 +51,14 @@ export default function AddLectureForm({addLecture, toggleModal}) {
         if (selectedDays.length === 0) return setErrorMessage(selectedDaysErrorMessage);
         if (calculateDuration(startTime, endTime) < 30) return setErrorMessage(durationErrorMessage);
         if (calculateDuration(startTime, endTime) > 240) return setErrorMessage(durationErrorMessage);
+        if (getHourFromTime(endTime) >= 6 && getHourFromTime(startTime) < 6 ) return setErrorMessage(durationErrorMessage);
 
 
         // generate random color for the lecture
         const COLORS = [
-            {background: "#E6F1D9", accent: "#88b054"},
-            {background: "#edebff", accent: "#8754ED"},
-            {background: "#D8E4FF", accent: "#6A93DB"},
+            {background: "#80ffd4", accent: "#42a683"},
+            {background: "#d0a3fa", accent: "#a642a4"},
+            {background: "#a3dcfa", accent: "#4247a6"},
         ];
         const colorNumber = Math.floor(Math.random() * 10) % 3;
         const color = COLORS[colorNumber];
@@ -106,18 +107,19 @@ export default function AddLectureForm({addLecture, toggleModal}) {
         {value: "tue", text: "الثلاثاء"},
         {value: "wed", text: "الأربعاء"},
         {value: "thu", text: "الخميس"},
+        {value: "fri", text: "الجمعة"},
+        {value: "sat", text: "السبت"},
     ];
 
   return (
     <form className='add-course-form flex flex-col justify-center items-center gap-4 rounded-md' onSubmit={(e) => handleAddLecture(e)}>
         <div className='flex w-full'>
             <label htmlFor="class-title" className='text-[#7f5ce5]' dir="rtl">عنوان المادة 
-                <span className='mr-1 text-lg text-red-500'>*</span>
-                <input className='text-[#7f5ce5] my-4 w-full py-1 px-5 border border-[#7f5ce5] rounded-md outline-none' id="class-title" type="text" required dir="rtl" value={classTitle} onChange={(e) => setClassTitle(e.target.value)}/>
+                <input className='text-[#7f5ce5] my-4 mr-8 py-1 px-5 border border-[#7f5ce5] rounded-md outline-none' id="class-title" type="text" required dir="rtl" value={classTitle} onChange={(e) => setClassTitle(e.target.value)}/>
             </label>
         </div>
 
-        <div className='flex flex-row flex-wrap gap-5'>
+        <div className='grid grid-cols-7 grid-rows-1 gap-2'>
             <DaysInput days={days} onChange={handleCheckbox}/>
         </div>
 
@@ -127,7 +129,7 @@ export default function AddLectureForm({addLecture, toggleModal}) {
 
         <div className='flex w-full'>
             <label htmlFor="location" className='text-[#7f5ce5]' dir='rtl'>مكان المحاضرة
-                <input type="text" id="location" className='text-[#7f5ce5] my-4 w-full py-1 px-5 border border-[#7f5ce5] rounded-md outline-none' placeholder='اختياري' value={location} onChange={(e) => setLocation(e.target.value)}/>
+                <input type="text" id="location" className='text-[#7f5ce5] my-4 mr-4 py-1 px-5 border border-[#7f5ce5] rounded-md outline-none' placeholder='اختياري' value={location} onChange={(e) => setLocation(e.target.value)}/>
             </label>
         </div>
         
@@ -139,7 +141,7 @@ export default function AddLectureForm({addLecture, toggleModal}) {
 
         <button className="form-button text-base my-4 py-2 px-5 mb-0 border-none rounded-lg outline-none" type='submit' dir='rtl'>أضف المادة</button>
 
-        {errorMessage && <div className='text-red-500 text-sm text-center'>{errorMessage}</div>}
+        {errorMessage && <div className='text-red-500 text-base text-center'>{errorMessage}</div>}
     </form>
   )
 }
