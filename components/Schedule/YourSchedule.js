@@ -25,7 +25,20 @@ export default function YourSchedule() {
           </div>
         </div>
         <Schedule lectures={lectures} />
-        
+        <div className='my-12'>
+          <ul className='text-right list-disc' dir='rtl'>
+            <li className='text-sm text-slate-500 my-1'>
+            مواعيد المحاضرات في رمضان تبدأ  من الساعة 10:00 صباحاً وتنتهي عند الخامسة عصراً كحد أقصى إذا كانت حضورية في الجامعة.
+            </li>
+            <li className='text-sm text-slate-500 my-1'>
+            المحاضرات بعد الخامسة عصراً تستمر عن بعد ويتم الاتفاق على وقت مناسب للجميع بين الطلاب والمعلمين.            </li>
+            <li className='text-sm text-slate-500 my-1'>
+            حسب التوقيت الرمضاني تتحول أوقات المحاضرات ذات 50 دقيقة إلى 40 دقيقة، بينما المحاضرات بمدة 75 دقيقة (ساعة وربع) تصبح مدتها ساعة.            </li>
+            <li className='text-sm text-slate-500 my-1'>
+            المعامل ذات الساعتين تصبح مدتها 80 دقيقة (ساعة ونصف)، والمعامل بطول ثلاث ساعات تصبح ساعتين.
+            </li>
+          </ul>
+        </div>
     </Container>
   )
 }

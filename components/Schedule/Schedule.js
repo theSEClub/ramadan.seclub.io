@@ -7,7 +7,7 @@ import Timeslots from './Timeslots'
 export default function Schedule({lectures}) {
 
   return (
-    <div className='mb-12'>
+    <div>
       <div className="schedule-container bg-white border-2 border-purple-200 rounded-3xl">
         <Days />
         <Timeslots /> 
