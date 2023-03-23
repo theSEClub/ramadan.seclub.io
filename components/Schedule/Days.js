@@ -9,8 +9,6 @@ export default function Days() {
             <li>Tue</li>
             <li>Wed</li>
             <li>Thur</li>
-            <li>Fri</li>
-            <li>Sat</li>
         </ul>
     </div>
   )

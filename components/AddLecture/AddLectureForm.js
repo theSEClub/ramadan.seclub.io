@@ -113,7 +113,8 @@ export default function AddLectureForm({addLecture, toggleModal}) {
     <form className='add-course-form flex flex-col justify-center items-center gap-4 rounded-md' onSubmit={(e) => handleAddLecture(e)}>
         <div className='flex w-full'>
             <label htmlFor="class-title" className='text-[#7f5ce5]' dir="rtl">عنوان المادة 
-                <input className='text-[#7f5ce5] my-4 mr-8 py-1 px-5 border border-[#7f5ce5] rounded-md outline-none' id="class-title" type="text" required dir="rtl" value={classTitle} onChange={(e) => setClassTitle(e.target.value)}/>
+                <span className='mr-1 text-lg text-red-500'>*</span>
+                <input className='text-[#7f5ce5] my-4 w-full py-1 px-5 border border-[#7f5ce5] rounded-md outline-none' id="class-title" type="text" required dir="rtl" value={classTitle} onChange={(e) => setClassTitle(e.target.value)}/>
             </label>
         </div>
 
@@ -127,7 +128,7 @@ export default function AddLectureForm({addLecture, toggleModal}) {
 
         <div className='flex w-full'>
             <label htmlFor="location" className='text-[#7f5ce5]' dir='rtl'>مكان المحاضرة
-                <input type="text" id="location" className='text-[#7f5ce5] my-4 mr-4 py-1 px-5 border border-[#7f5ce5] rounded-md outline-none' placeholder='اختياري' value={location} onChange={(e) => setLocation(e.target.value)}/>
+                <input type="text" id="location" className='text-[#7f5ce5] my-4 w-full py-1 px-5 border border-[#7f5ce5] rounded-md outline-none' placeholder='اختياري' value={location} onChange={(e) => setLocation(e.target.value)}/>
             </label>
         </div>
         

@@ -30,7 +30,7 @@ export default function Modal({openText, addLecture, deleteLecture, lectures}) {
       </button>
 
       {modal && (
-        <div className="modal overflow-y-scroll">
+        <div className="modal overflow-y-scroll z-50">
           <div onClick={() => toggleModal()} className="overlay"></div>
           <div className="modal-content">
             <div className="flex justify-end">
