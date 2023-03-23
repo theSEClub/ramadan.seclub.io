@@ -9,7 +9,7 @@ import Container from './Container';
 
 export default function Header() {
   return (
-    <nav className='fixed w-full bg-gray-100 bg-opacity-50 backdrop-blur backdrop-filter firefox:bg-opacity-90 px-8 py-2 z-50'>
+    <nav className='fixed w-full bg-gray-100 bg-opacity-50 backdrop-blur backdrop-filter firefox:bg-opacity-90 py-2 z-50'>
    <Container>
     <div className='flex items-center justify-end'>
       <div className='mr-auto'>
