@@ -51,7 +51,7 @@ export default function Lecture({classTitle, startTime, endTime, day, color, loc
   return (
     <>
       <div 
-          className={`absolute rounded-md z-10 text-white text-xs font-bold text-center w-[10vw] min-w-[72px] flex flex-col items-center justify-around`}
+          className={`absolute rounded-md z-10 text-white text-xs font-bold text-center w-[calc((100%/4)-4px)] flex flex-col items-center justify-around`}
           style={{
             backgroundColor: `${color.background}`,
             borderLeft: `4px solid ${color.accent}`,
