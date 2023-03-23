@@ -7,8 +7,8 @@ import Timeslots from './Timeslots'
 export default function Schedule({lectures}) {
 
   return (
-    <div className='bg-[#eeedfd] p-[2vw] rounded-[50px]'>
-      <div className="schedule-container bg-white rounded-[50px]">
+    <div className='mb-12'>
+      <div className="schedule-container bg-white border-2 border-purple-200 rounded-3xl">
         <Days />
         <Timeslots /> 
         <LecturesList lectures={lectures}/>

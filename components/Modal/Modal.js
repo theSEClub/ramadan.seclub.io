@@ -22,15 +22,15 @@ export default function Modal({openText, addLecture, deleteLecture, lectures}) {
 
   return (
     <>
-      <button onClick={() => toggleModal()} className="btn-modal border-none outline-none rounded-xl font-mirza mx-4 my-2">
+      <button onClick={() => toggleModal()} className="bg-green-se-100 px-6 py-[5px] text-green-se hover:bg-green-se-200 border-none outline-none rounded-xl">
         <div className="flex items-center">
-          <span className="mx-1">{openText}</span>
+          <div className="mx-1 text-sm lg:text-xl mt-[3px]">{openText}</div>
            {(openText === "إضافة مادة") ? <RxPlus /> : <TbTrash />}
         </div>
       </button>
 
       {modal && (
-        <div className="modal font-mirza overflow-y-scroll">
+        <div className="modal overflow-y-scroll">
           <div onClick={() => toggleModal()} className="overlay"></div>
           <div className="modal-content">
             <div className="flex justify-end">

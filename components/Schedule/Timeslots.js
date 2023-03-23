@@ -4,8 +4,6 @@ export default function Timeslots() {
   return (
     <div className="timeslots-container">
         <ul className="timeslots">
-            <li>6 AM</li>
-            <li>7 AM</li>
             <li>8 AM</li>
             <li>9 AM</li>
             <li>10 AM</li>
@@ -22,13 +20,6 @@ export default function Timeslots() {
             <li>9 PM</li>
             <li>10 PM</li>
             <li>11 PM</li>
-            <li>12 AM</li>
-            <li>1 AM</li>
-            <li>2 AM</li>
-            <li>3 AM</li>
-            <li>4 AM</li>
-            <li>5 AM</li>
-
         </ul>
 
     </div>

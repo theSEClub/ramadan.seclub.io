@@ -13,7 +13,7 @@ export function calculateDuration(startTime, endTime) {
   const durationHours = parseInt(endHours) - parseInt(startHours);
   const durationMinutes = parseInt(endMinutes) - parseInt(startMinutes);
 
-  const totalDurationInMinutes = durationHours * 60 + durationMinutes
+  const totalDurationInMinutes = durationHours * 45 + durationMinutes
 
   return totalDurationInMinutes; 
 }
@@ -32,7 +32,7 @@ function calculateMargin(startTime) {
 function calculateRow(startTime) {
   const time = startTime.split(":");
   const hours = time[0];
-  return hours - 5;
+  return hours - 7;
 }
 
 function calculateColumn(day) {
@@ -51,7 +51,7 @@ export default function Lecture({classTitle, startTime, endTime, day, color, loc
   return (
     <>
       <div 
-          className={`absolute rounded-md z-10 text-white text-xs font-bold text-center ml-[0.5vw] w-[10vw] min-w-[65px] flex flex-col items-center justify-around`}
+          className={`absolute rounded-md z-10 text-white text-xs font-bold text-center w-[10vw] min-w-[72px] flex flex-col items-center justify-around`}
           style={{
             backgroundColor: `${color.background}`,
             borderLeft: `4px solid ${color.accent}`,
@@ -61,8 +61,8 @@ export default function Lecture({classTitle, startTime, endTime, day, color, loc
             marginTop: `${calculateMargin(startTime)}px`
           }}
           >
-            <span className='text-base'>{classTitle}</span>
-            <span className='text-xs'>{startTime} - {endTime}</span>
+            <span className='text-sm'>{classTitle}</span>
+            <span className='text-[0.55rem]'>{startTime} - {endTime}</span>
             <span className='text-xs'>{location}</span>
         </div>
     </>
