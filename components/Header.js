@@ -13,7 +13,9 @@ export default function Header() {
    <Container>
     <div className='flex items-center justify-end'>
       <div className='mr-auto'>
+        <Link href="/">
           <Image src={logo} alt='SE logo' className='h-14 lg:h-20 w-auto'/>
+        </Link>
       </div>
       <ul className='flex gap-6'>
         <li>
