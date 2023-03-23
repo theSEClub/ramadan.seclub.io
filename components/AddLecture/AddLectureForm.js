@@ -51,7 +51,6 @@ export default function AddLectureForm({addLecture, toggleModal}) {
         if (selectedDays.length === 0) return setErrorMessage(selectedDaysErrorMessage);
         if (calculateDuration(startTime, endTime) < 30) return setErrorMessage(durationErrorMessage);
         if (calculateDuration(startTime, endTime) > 240) return setErrorMessage(durationErrorMessage);
-        if (getHourFromTime(endTime) >= 6 && getHourFromTime(startTime) < 6 ) return setErrorMessage(durationErrorMessage);
 
 
         // generate random color for the lecture
