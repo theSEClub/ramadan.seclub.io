@@ -25,7 +25,7 @@ export default function AddLectureForm({addLecture, toggleModal}) {
 
     // 😅 
     const malaksErrorMessage = "The time requested is not a standard time. The faculty members with arrangement with the students has the to propose a suitable timing for all of them ";
-    const arabicErrorMessage = "عذراً. إن تحويل المحاضرة للأوقات الرمضانية غير متاح للمواعيد غير المسجلة في الجدول المرسل.";
+    const arabicErrorMessage = "عذراً. إن تحويل وقت المحاضرة إلى الأوقات الرمضانية غير متاح للمواعيد غير المسجلة في الجدول الرسمي من إدارة الجامعة.";
     const durationErrorMessage = "الرجاء اختيار أوقات صحيحة";
     const selectedDaysErrorMessage = "الرجاء القيام باختيار أحد الأيام";
 
@@ -140,7 +140,7 @@ export default function AddLectureForm({addLecture, toggleModal}) {
 
         <button className="form-button text-base my-4 py-2 px-5 mb-0 border-none rounded-lg outline-none" type='submit' dir='rtl'>أضف المادة</button>
 
-        {errorMessage && <div className='text-red-500 text-base text-center'>{errorMessage}</div>}
+        {errorMessage && <div className='text-red-500 text-sm text-center'>{errorMessage}</div>}
     </form>
   )
 }
