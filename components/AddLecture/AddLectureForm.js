@@ -107,8 +107,6 @@ export default function AddLectureForm({addLecture, toggleModal}) {
         {value: "tue", text: "الثلاثاء"},
         {value: "wed", text: "الأربعاء"},
         {value: "thu", text: "الخميس"},
-        {value: "fri", text: "الجمعة"},
-        {value: "sat", text: "السبت"},
     ];
 
   return (
@@ -119,7 +117,7 @@ export default function AddLectureForm({addLecture, toggleModal}) {
             </label>
         </div>
 
-        <div className='grid grid-cols-7 grid-rows-1 gap-2'>
+        <div className='flex flex-row flex-wrap gap-5'>
             <DaysInput days={days} onChange={handleCheckbox}/>
         </div>
 
