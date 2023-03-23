@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-export function calculateDuration(startTime, endTime) {
+function calculateDuration(startTime, endTime) {
   const startTimeArray = startTime.split(":");
   const startHours = startTimeArray[0];
   const startMinutes = startTimeArray[1];

@@ -1,6 +1,5 @@
 import { getRamadanTime } from '@/helpers/ramadanTiming';
 import React, { useEffect, useState } from 'react'
-import { calculateDuration } from '../Schedule/Lecture';
 import DaysInput from './DaysInput';
 import TimeInput from './TimeInput';
 
@@ -8,6 +7,23 @@ import TimeInput from './TimeInput';
 function getHourFromTime(time){
     const timeArray = time.split(':');
     return timeArray[0];
+}
+
+function calculateDuration(startTime, endTime) {
+    const startTimeArray = startTime.split(":");
+    const startHours = startTimeArray[0];
+    const startMinutes = startTimeArray[1];
+  
+    const endTimeArray = endTime.split(":");
+    const endHours = endTimeArray[0];
+    const endMinutes = endTimeArray[1];
+  
+    const durationHours = parseInt(endHours) - parseInt(startHours);
+    const durationMinutes = parseInt(endMinutes) - parseInt(startMinutes);
+  
+    const totalDurationInMinutes = durationHours * 60 + durationMinutes
+  
+    return totalDurationInMinutes; 
 }
 
 export default function AddLectureForm({addLecture, toggleModal}) {
