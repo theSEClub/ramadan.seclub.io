@@ -17,6 +17,12 @@ body {
     padding: 0;
     margin: 0;
 }
+html{
+
+    padding: 0;
+    margin: 0;
+}
+
 
 ul {
     list-style: none;
@@ -130,6 +136,48 @@ ul {
 
 }
 
+/* Reem's desperate attempts */
+.text-8xl{
+    margin-right: 10%;
+    font-size: 3.75rem;
+}
+
+.main-title {
+    position: relative;
+    top: -40%;
+  }
+.main-text{
+    position: relative;
+    top: -40%;
+    font-size: 2.5rem;
+}
+@media screen and (max-width: 768px) {
+    .text-8xl {
+      font-size: 4rem;
+    margin: auto;
+    margin-top: 10%;
+    }
+
+  }
+
+  @media (max-width: 917px) {
+    .text-8xl {
+        font-size: 3rem;
+
+    }
+
+    .main-text{
+        font-size: 1.5rem;
+
+    }
+
+}
+/* the end */
+
+
+
+
+
 /* @media all and (max-width: 684px){
     .timeslots li{color: red;}
 } */
@@ -152,6 +200,7 @@ ul {
 .main-text {
     grid-row: 2 / 3;
     grid-column: 2 / 3;
+    margin-right: 10%;
 }
 
 .main-image {
@@ -171,11 +220,14 @@ ul {
     .main-title {
         grid-row: 1 / 2;
         grid-column: 1 / 2;
+        top: -20%;
     }
 
     .main-text {
         grid-row: 2 / 3;
         grid-column: 1 / 2;
+        margin: 3%;
+        padding-top: 4%;
     }
 
     .main-image {
@@ -207,7 +259,7 @@ body.active-modal .schedule-container{
 }
 
 .btn-modal {
-    font-size: 1rem;
+    font-size: 2rem;
     padding: 1em 0.5em;
     background-color: var(--light_green);
     color: var(--green);
@@ -335,3 +387,11 @@ body.active-modal .schedule-container{
     -ms-transform: scale(1.25);
     -o-transform: scale(1.25);
 }
+
+
+
+/* Reem's desperate attempts */
+@media (max-width: 760px){
+.btn-modal {
+    font-size: 1.5rem;;
+}}
