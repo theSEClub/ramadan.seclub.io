@@ -56,9 +56,9 @@ export default function AddLectureForm({addLecture, toggleModal}) {
 
         // generate random color for the lecture
         const COLORS = [
-            {background: "#80ffd4", accent: "#42a683"},
-            {background: "#d0a3fa", accent: "#a642a4"},
-            {background: "#a3dcfa", accent: "#4247a6"},
+            {background: "#E6F1D9", accent: "#88b054"},
+            {background: "#edebff", accent: "#8754ED"},
+            {background: "#D8E4FF", accent: "#6A93DB"},
         ];
         const colorNumber = Math.floor(Math.random() * 10) % 3;
         const color = COLORS[colorNumber];
