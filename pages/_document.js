@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document'
+import Script from 'next/script'
 
 export default function Document() {
   return (
@@ -23,15 +24,19 @@ export default function Document() {
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
         {/* <link rel="manifest" href="/site.webmanifest"></link> */}
 
-        {/* <!-- Google tag (gtag.js) --> */}
-        {/* <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZMS2W0ENX1"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments)}
-          gtag('js', new Date());
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-ZMS2W0ENX1"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
 
-          gtag('config', 'G-ZMS2W0ENX1');
-        </script> */}
+            gtag('config', 'G-ZMS2W0ENX1');
+          `}
+        </Script>
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
