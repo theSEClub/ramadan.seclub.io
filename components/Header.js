@@ -2,8 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import logo from "../assets/se-club-logo.svg";
-import { FiGithub, FiInstagram } from "react-icons/fi";
-import { FiTwitter } from "react-icons/fi";
+import { FiTwitter, FiGithub, FiInstagram, FiLinkedin } from "react-icons/fi";
 import { FaTelegramPlane } from "react-icons/fa";
 import Container from "./Container";
 
@@ -31,6 +30,14 @@ export default function Header() {
             <li>
               <Link target="_blank" href="https://www.instagram.com/seclub_upm">
                 <FiInstagram className="text-black text-xl" />
+              </Link>
+            </li>
+            <li>
+              <Link
+                target="_blank"
+                href="https://www.linkedin.com/company/seclub-upm/"
+              >
+                <FiLinkedin className="text-black text-xl" />
               </Link>
             </li>
             <li>
