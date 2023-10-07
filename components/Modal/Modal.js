@@ -2,15 +2,11 @@ import React, { useEffect, useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import { RxPlus } from "react-icons/rx";
 import { TbTrash } from "react-icons/tb";
-import AddLectureForm from "../AddLecture/AddLectureForm";
-import ManageLectures from "../ManageLectures/ManageLectures";
+import AddLecture from "./AddLecture";
+import ManageLectures from "./ManageLectures";
 
-export default function Modal({
-  openText,
-  addLecture,
-  deleteLecture,
-  lectures,
-}) {
+export default function Modal({ type }) {
+
   const [modal, setModal] = useState(false);
 
   function toggleModal() {
@@ -33,7 +29,9 @@ export default function Modal({
       >
         <div className="flex items-center">
           <div className="mx-1 text-sm lg:text-xl mt-[3px]">{openText}</div>
-          {openText === "إضافة مادة" ? <RxPlus /> : <TbTrash />}
+          {type === "add"
+            ? <RxPlus />
+            : <TbTrash />}
         </div>
       </button>
 
@@ -47,18 +45,16 @@ export default function Modal({
               </button>
             </div>
 
-            {openText === "إضافة مادة" ? (
-              <AddLectureForm
-                addLecture={addLecture}
-                toggleModal={toggleModal}
-              />
-            ) : (
-              <ManageLectures
-                deleteLecture={deleteLecture}
-                lectures={lectures}
-                toggleModal={toggleModal}
-              />
-            )}
+            {type === "add"
+              ? (
+                <AddLecture
+                  toggleModal={toggleModal}
+                />
+              ) : (
+                <ManageLectures
+                  toggleModal={toggleModal}
+                />
+              )}
           </div>
         </div>
       )}

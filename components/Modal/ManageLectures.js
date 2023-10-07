@@ -1,4 +1,4 @@
-import { useLectures, useLecturesDispatch } from "@/context/lecturesContext";
+import { useLectures, useLecturesDispatch } from "@/context/LecturesContext";
 import React from "react";
 import { TbTrash } from "react-icons/tb";
 

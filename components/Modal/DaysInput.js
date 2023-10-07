@@ -13,6 +13,7 @@ export default function DaysInput({ days, onChange }) {
             {day.text}
           </label>
           <input
+            name={`day-${day.value}`}
             id={day.value}
             className="outline-none"
             type="checkbox"

@@ -1,7 +1,9 @@
-import { getRamadanTime } from "@/helpers/ramadanTiming";
+import { getRamadanTime } from "@/utils/ramadanTiming";
 import React, { useEffect, useState } from "react";
 import DaysInput from "./DaysInput";
 import TimeInput from "./TimeInput";
+import { useLecturesDispatch } from "@/context/LecturesContext";
+
 
 function getHourFromTime(time) {
   const timeArray = time.split(":");
@@ -25,7 +27,10 @@ function calculateDuration(startTime, endTime) {
   return totalDurationInMinutes;
 }
 
-export default function AddLectureForm({ addLecture, toggleModal }) {
+export default function AddLecture({ toggleModal }) {
+
+  const dispatch = useLecturesDispatch();
+
   const [isRamadan, setIsRamadan] = useState(true);
 
   const [classTitle, setClassTitle] = useState("");
@@ -37,14 +42,17 @@ export default function AddLectureForm({ addLecture, toggleModal }) {
 
   const [clearCheckboxes, setClearCheckboxes] = useState(false);
 
-  // 😅
-  const malaksErrorMessage =
-    "The time requested is not a standard time. The faculty members with arrangement with the students has the to propose a suitable timing for all of them ";
-  const arabicErrorMessage =
-    "عذراً. إن تحويل المحاضرة للأوقات الرمضانية غير متاح للمواعيد غير المسجلة في الجدول المرسل.";
-  const durationErrorMessage = "الرجاء اختيار أوقات صحيحة";
-  const selectedDaysErrorMessage = "الرجاء القيام باختيار أحد الأيام";
+  const ERRORS = {
+    functionReturn: "The time requested is not a standard time. The faculty members with arrangement with the students has the to propose a suitable timing for all of them ",
+    translatedFunctionReturn: "عذراً. إن تحويل المحاضرة للأوقات الرمضانية غير متاح للمواعيد غير المسجلة في الجدول المرسل.",
+    wrongTimeValues: "الرجاء اختيار أوقات صحيحة",
+    shortLecture: "وقت المحاضرة يجب أن لا يقل عن ٣٠ دقيقة",
+    longLecture: "وقت المحاضرة يجب أن لا يزيد عن ٤ ساعات",
+    noSelectedDays: "الرجاء القيام باختيار أحد الأيام",
+  };
 
+
+  // to clear all checkboxes after submitting the form
   useEffect(() => {
     if (clearCheckboxes) {
       const daysCheckboxes = document.querySelectorAll(".form-day-checkbox");
@@ -53,6 +61,7 @@ export default function AddLectureForm({ addLecture, toggleModal }) {
     }
   }, [clearCheckboxes]);
 
+  // to toggle a checkbox
   function handleCheckbox(e) {
     if (e.target.checked === true)
       return setSelectedDays([...selectedDays, e.target.value]);
@@ -61,18 +70,23 @@ export default function AddLectureForm({ addLecture, toggleModal }) {
     );
   }
 
+  // to add a lecture
   function handleAddLecture(e) {
     e.preventDefault();
 
     // check entered information
     if (selectedDays.length === 0)
-      return setErrorMessage(selectedDaysErrorMessage);
+      return setErrorMessage(ERRORS.noSelectedDays);
+
     if (calculateDuration(startTime, endTime) < 30)
-      return setErrorMessage(durationErrorMessage);
+      return setErrorMessage(ERRORS.shortLecture);
+
     if (calculateDuration(startTime, endTime) > 240)
-      return setErrorMessage(durationErrorMessage);
+      return setErrorMessage(ERRORS.longLecture);
+
     if (getHourFromTime(endTime) >= 6 && getHourFromTime(startTime) < 6)
-      return setErrorMessage(durationErrorMessage);
+      return setErrorMessage(ERRORS.wrongTimeValues);
+
 
     // generate random color for the lecture
     const COLORS = [
@@ -83,44 +97,51 @@ export default function AddLectureForm({ addLecture, toggleModal }) {
     const colorNumber = Math.floor(Math.random() * 10) % 3;
     const color = COLORS[colorNumber];
 
+
+    // add lecture
     if (isRamadan) {
-      var ramadanError = false;
-      var returnedValue;
+
+      var convertedValue;
 
       selectedDays.forEach((day) => {
-        returnedValue = getRamadanTime(startTime, endTime, day);
-        if (returnedValue === malaksErrorMessage) {
-          ramadanError = true;
+        convertedValue = getRamadanTime(startTime, endTime, day);
+        if (convertedValue === ERRORS.functionReturn) {
+          return setErrorMessage(ERRORS.translatedFunctionReturn);
         }
       });
 
-      if (ramadanError) {
-        return setErrorMessage(arabicErrorMessage);
-      }
+      const ramadanStart = convertedValue[0];
+      const ramadanEnd = convertedValue[1];
 
-      const ramadanStart = returnedValue[0];
-      const ramadanEnd = returnedValue[1];
-
-      addLecture({
-        classTitle,
-        selectedDays,
-        startTime: ramadanStart,
-        endTime: ramadanEnd,
-        location,
-        color,
+      dispatch({
+        type: ACTIONS.ADD_LECTURE,
+        payload: {
+          classTitle,
+          selectedDays,
+          startTime: ramadanStart,
+          endTime: ramadanEnd,
+          location,
+          color,
+        },
       });
+
     } else {
-      addLecture({
-        classTitle,
-        selectedDays,
-        startTime,
-        endTime,
-        location,
-        color,
+      // not a ramadan time
+
+      dispatch({
+        type: ACTIONS.ADD_LECTURE,
+        payload: {
+          classTitle,
+          selectedDays,
+          startTime,
+          endTime,
+          location,
+          color,
+        },
       });
     }
 
-    // clear states
+    // clear form
     setClassTitle("");
     setSelectedDays([]);
     setClearCheckboxes(true);
@@ -129,6 +150,7 @@ export default function AddLectureForm({ addLecture, toggleModal }) {
     setLocation("");
     setErrorMessage("");
 
+    // close modal
     toggleModal();
   }
 
@@ -137,9 +159,7 @@ export default function AddLectureForm({ addLecture, toggleModal }) {
     { value: "mon", text: "الاثنين" },
     { value: "tue", text: "الثلاثاء" },
     { value: "wed", text: "الأربعاء" },
-    { value: "thu", text: "الخميس" },
-    { value: "fri", text: "الجمعة" },
-    { value: "sat", text: "السبت" },
+    { value: "thu", text: "الخميس" }
   ];
 
   return (
@@ -167,12 +187,14 @@ export default function AddLectureForm({ addLecture, toggleModal }) {
       </div>
 
       <TimeInput
+        name="start-time"
         value={startTime}
         text={"بداية المحاضرة"}
         onChange={setStartTime}
       />
 
       <TimeInput
+        name="end-time"
         value={endTime}
         text={"نهاية المحاضرة"}
         onChange={setEndTime}
@@ -182,6 +204,7 @@ export default function AddLectureForm({ addLecture, toggleModal }) {
         <label htmlFor="location" className="text-[#7f5ce5]" dir="rtl">
           مكان المحاضرة
           <input
+            name="location"
             type="text"
             id="location"
             className="text-[#7f5ce5] my-4 mr-4 py-1 px-5 border border-[#7f5ce5] rounded-md outline-none"
@@ -196,6 +219,7 @@ export default function AddLectureForm({ addLecture, toggleModal }) {
         <label htmlFor="convert" className="text-[#7f5ce5]" dir="rtl">
           لا تقم بتحويل الوقت إلى أوقات رمضان
           <input
+            name="ramadan-convert"
             type="checkbox"
             id="convert"
             className="my-4 mr-2"
@@ -216,6 +240,7 @@ export default function AddLectureForm({ addLecture, toggleModal }) {
       {errorMessage && (
         <div className="text-red-500 text-base text-center">{errorMessage}</div>
       )}
+      
     </form>
   );
 }

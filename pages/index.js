@@ -3,10 +3,11 @@ import Image from "next/image";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Main from "../components/Main";
-import YourSchedule from "../components/Schedule/YourSchedule";
+import Schedule from "../components/Schedule/Schedule";
 import styles from "@/styles/Home.module.css";
 import background from "../assets/bg.svg";
 import localFont from "next/font/local";
+import { LecturesProvider } from "@/context/LecturesContext";
 
 const sans = localFont({
   src: [
@@ -34,17 +35,21 @@ const sans = localFont({
 export default function Home() {
   return (
     <>
-      <div className={`overflow-hidden relative font-body ${sans.className}`}>
-        <Image
-          src={background}
-          alt="calendar"
-          className="main-image col-start-1 w-screen h-auto absolute top-0 left-0 z-[-1]"
-        />
-        <Header />
-        <Main />
-        <YourSchedule />
-        <Footer />
-      </div>
+      <LecturesProvider>
+
+        <div className={`overflow-hidden relative font-body ${sans.className}`}>
+          <Image
+            src={background}
+            alt="calendar"
+            className="main-image col-start-1 w-screen h-auto absolute top-0 left-0 z-[-1]"
+          />
+          <Header />
+          <Main />
+          <Schedule />
+          <Footer />
+        </div>
+
+      </LecturesProvider>
     </>
   );
 }
