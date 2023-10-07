@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Modal from "../Modal/Modal";
-import OldSchedule from "./OldSchedule";
 import Container from "../Container";
 import Timetable from "./Timetable";
 import { ACTIONS, useLecturesDispatch } from "@/context/LecturesContext";
@@ -44,8 +43,7 @@ export default function Schedule() {
           <Modal type="manage" />
         </div>
       </div>
-      <OldSchedule />
-      <Timetable />
+      <Timetable DAYS={DAYS} HOURS={HOURS} />
       <Instructions />
     </Container>
   );
