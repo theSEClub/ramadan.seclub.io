@@ -1,13 +1,20 @@
+import { useLectures, useLecturesDispatch } from "@/context/lecturesContext";
 import React from "react";
 import { TbTrash } from "react-icons/tb";
 
-export default function DeleteLectureForm({
-  deleteLecture,
-  lectures,
-  toggleModal,
-}) {
+
+// @todo change color + edit option
+export default function ManageLectures({ toggleModal }) {
+
+  const lectures = useLectures();
+
+  const dipatch = useLecturesDispatch();
+
   function handleDeleteLecture(lecture) {
-    deleteLecture(lecture);
+    dipatch({
+      type: ACTIONS.DELETE_LECTURE,
+      payload: lecture,
+    });
     toggleModal();
   }
 

@@ -3,7 +3,7 @@ import { RxCross2 } from "react-icons/rx";
 import { RxPlus } from "react-icons/rx";
 import { TbTrash } from "react-icons/tb";
 import AddLectureForm from "../AddLecture/AddLectureForm";
-import DeleteLectureForm from "../DeleteLecture/DeleteLectureForm";
+import ManageLectures from "../ManageLectures/ManageLectures";
 
 export default function Modal({
   openText,
@@ -53,7 +53,7 @@ export default function Modal({
                 toggleModal={toggleModal}
               />
             ) : (
-              <DeleteLectureForm
+              <ManageLectures
                 deleteLecture={deleteLecture}
                 lectures={lectures}
                 toggleModal={toggleModal}
