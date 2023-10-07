@@ -2,7 +2,7 @@ import { getRamadanTime } from "@/utils/ramadanTiming";
 import React, { useEffect, useState } from "react";
 import DaysInput from "./DaysInput";
 import TimeInput from "./TimeInput";
-import { useLecturesDispatch } from "@/context/LecturesContext";
+import { ACTIONS, useLecturesDispatch } from "@/context/LecturesContext";
 
 
 function getHourFromTime(time) {
@@ -78,14 +78,17 @@ export default function AddLecture({ toggleModal }) {
     if (selectedDays.length === 0)
       return setErrorMessage(ERRORS.noSelectedDays);
 
+    if (startTime > endTime)
+      return setErrorMessage(ERRORS.wrongTimeValues);
+    
+    if (getHourFromTime(endTime) >= 6 && getHourFromTime(startTime) < 6)
+      return setErrorMessage(ERRORS.wrongTimeValues);
+
     if (calculateDuration(startTime, endTime) < 30)
       return setErrorMessage(ERRORS.shortLecture);
 
     if (calculateDuration(startTime, endTime) > 240)
       return setErrorMessage(ERRORS.longLecture);
-
-    if (getHourFromTime(endTime) >= 6 && getHourFromTime(startTime) < 6)
-      return setErrorMessage(ERRORS.wrongTimeValues);
 
 
     // generate random color for the lecture

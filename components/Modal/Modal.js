@@ -28,7 +28,13 @@ export default function Modal({ type }) {
         className="bg-green-se-100 px-6 py-[5px] text-green-se hover:bg-green-se-200 border-none outline-none rounded-xl"
       >
         <div className="flex items-center">
-          <div className="mx-1 text-sm lg:text-xl mt-[3px]">{openText}</div>
+          <div className="mx-1 text-sm lg:text-xl mt-[3px]">
+            {type === "add"
+            ? "إضافة مادة"
+            : "حذف مادة"
+
+            }
+          </div>
           {type === "add"
             ? <RxPlus />
             : <TbTrash />}
