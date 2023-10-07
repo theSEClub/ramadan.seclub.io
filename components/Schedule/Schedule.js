@@ -5,7 +5,6 @@ import Timetable from "./Timetable";
 import { ACTIONS, useLecturesDispatch } from "@/context/LecturesContext";
 import Instructions from "../Instructions";
 
-// @todo RENAME to Schedule
 export default function Schedule() {
 
   const dispatch = useLecturesDispatch();
