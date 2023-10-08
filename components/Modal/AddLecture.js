@@ -43,8 +43,8 @@ export default function AddLecture({ toggleModal }) {
   const [clearCheckboxes, setClearCheckboxes] = useState(false);
 
   const ERRORS = {
-    functionReturn: "The time requested is not a standard time. The faculty members with arrangement with the students has the to propose a suitable timing for all of them ",
-    translatedFunctionReturn: "عذراً. إن تحويل المحاضرة للأوقات الرمضانية غير متاح للمواعيد غير المسجلة في الجدول المرسل.",
+    conversionReturn: "The time requested is not a standard time. The faculty members with arrangement with the students has the to propose a suitable timing for all of them ",
+    translatedConversionReturn: "عذراً. إن تحويل المحاضرة للأوقات الرمضانية غير متاح للمواعيد غير المسجلة في الجدول المرسل.",
     wrongTimeValues: "الرجاء اختيار أوقات صحيحة",
     shortLecture: "وقت المحاضرة يجب أن لا يقل عن ٣٠ دقيقة",
     longLecture: "وقت المحاضرة يجب أن لا يزيد عن ٤ ساعات",
@@ -81,7 +81,7 @@ export default function AddLecture({ toggleModal }) {
     if (startTime > endTime)
       return setErrorMessage(ERRORS.wrongTimeValues);
     
-    if (getHourFromTime(endTime) >= 6 && getHourFromTime(startTime) < 6)
+    if (getHourFromTime(endTime) > 23 || getHourFromTime(startTime) < 7)
       return setErrorMessage(ERRORS.wrongTimeValues);
 
     if (calculateDuration(startTime, endTime) < 30)
@@ -108,8 +108,8 @@ export default function AddLecture({ toggleModal }) {
 
       selectedDays.forEach((day) => {
         convertedValue = getRamadanTime(startTime, endTime, day);
-        if (convertedValue === ERRORS.functionReturn) {
-          return setErrorMessage(ERRORS.translatedFunctionReturn);
+        if (convertedValue === ERRORS.conversionReturn) {
+          return setErrorMessage(ERRORS.translatedConversionReturn);
         }
       });
 
@@ -171,10 +171,10 @@ export default function AddLecture({ toggleModal }) {
       onSubmit={(e) => handleAddLecture(e)}
     >
       <div className="flex w-full">
-        <label htmlFor="class-title" className="text-[#7f5ce5]" dir="rtl">
+        <label htmlFor="class-title" className="text-purple-500" dir="rtl">
           عنوان المادة
           <input
-            className="text-[#7f5ce5] my-4 mr-8 py-1 px-5 border border-[#7f5ce5] rounded-md outline-none"
+            className="text-purple-500 my-4 mr-8 py-1 px-5 border border-purple-500 rounded-md outline-none"
             id="class-title"
             type="text"
             required
@@ -183,6 +183,7 @@ export default function AddLecture({ toggleModal }) {
             onChange={(e) => setClassTitle(e.target.value)}
           />
         </label>
+        
       </div>
 
       <div className="grid grid-cols-7 grid-rows-1 gap-2">
@@ -204,13 +205,13 @@ export default function AddLecture({ toggleModal }) {
       />
 
       <div className="flex w-full">
-        <label htmlFor="location" className="text-[#7f5ce5]" dir="rtl">
+        <label htmlFor="location" className="text-purple-500" dir="rtl">
           مكان المحاضرة
           <input
             name="location"
             type="text"
             id="location"
-            className="text-[#7f5ce5] my-4 mr-4 py-1 px-5 border border-[#7f5ce5] rounded-md outline-none"
+            className="text-purple-500 my-4 mr-4 py-1 px-5 border border-purple-500 rounded-md outline-none"
             placeholder="اختياري"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
@@ -219,7 +220,7 @@ export default function AddLecture({ toggleModal }) {
       </div>
 
       <div className="flex w-full">
-        <label htmlFor="convert" className="text-[#7f5ce5]" dir="rtl">
+        <label htmlFor="convert" className="text-purple-500" dir="rtl">
           لا تقم بتحويل الوقت إلى أوقات رمضان
           <input
             name="ramadan-convert"

@@ -64,7 +64,7 @@ export default function Timetable({ DAYS, HOURS }) {
                                     style={{ gridColumn: 1, gridRow: `${index * 12 + 2} / ${index * 12 + 14}` }}
                                 >
                                     <div className='flex flex-col justify-start items-center h-full'>
-                                        <p className='text-center text-[10px] text-gray-500 pt-1'>{hour}</p>
+                                        <p className='text-center text-2xs text-gray-500 pt-1'>{hour}</p>
                                     </div>
                                 </div>
                             )
@@ -89,11 +89,10 @@ export default function Timetable({ DAYS, HOURS }) {
                     }
 
                     {lectures?.map((lecture) => (
-                        console.log(lecture),
                         lecture.selectedDays.map((day, dayIndex) => (
 
                             <div
-                                key={lecture.day + lecture.classtitle + lecture.startTime}
+                                key={`lecture-${lecture.classTitle}-${day}-lecture.startTime`}
                                 className='rounded-md text-center flex flex-col items-center justify-around mx-1'
                                 style={{
                                     backgroundColor: lecture.color.background,

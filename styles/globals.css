@@ -5,11 +5,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Mirza:wght@400;700&display=swap');
 
 :root {
-    --gray: hsla(0, 0%, 96%, 1);
-    --purple: #8754ed;
-    --light_purple: #edebff;
-    --green: #56c5c2;
-    --light_green: #c7ebed;
+    --purple_500: #7f5ce5; 
+    --purple_200: #edebff;
 }
 
 body {
@@ -131,8 +128,8 @@ body.active-modal {
 
 .close-modal {
     padding: 5px 7px;
-    background-color: var(--light_purple);
-    color: var(--purple);
+    background-color: var(--purple_200);
+    color: var(--purple_500);
     cursor: pointer;
     border: none;
     outline: none;
@@ -182,8 +179,8 @@ body.active-modal {
 
 .form-button {
     font-size: 1rem;
-    background-color: var(--light_purple);
-    color: var(--purple);
+    background-color: var(--purple_200);
+    color: var(--purple_500);
     cursor: pointer;
     transition: transform ease-in-out 200ms, box-shadow ease-in-out 200ms;
     -webkit-transition: transform ease-in-out 200ms, box-shadow ease-in-out 200ms;

@@ -15,15 +15,17 @@ export default function ManageLectures({ toggleModal }) {
       type: ACTIONS.DELETE_LECTURE,
       payload: lecture,
     });
-    toggleModal();
+
+    // only close modal if there are no remaining lectures
+    if (lectures.length === 1) toggleModal();
   }
 
   return (
     <div className="overflow-x-scroll">
       {
         lectures?.length === 0 && (
-          <div className="mt-6 p-3 flex items-center justify-center text-purple ">
-            لا يوجد محاضرات
+          <div className="mt-6 p-3 flex items-center justify-center text-purple-500 ">
+            لا يوجد مواد
           </div>
         )
       }

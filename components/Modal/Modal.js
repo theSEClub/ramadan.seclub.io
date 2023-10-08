@@ -30,8 +30,8 @@ export default function Modal({ type }) {
         <div className="flex items-center">
           <div className="mx-1 text-sm lg:text-xl mt-[3px]">
             {type === "add"
-            ? "إضافة مادة"
-            : "حذف مادة"
+              ? "إضافة مادة"
+              : "حذف مادة"
 
             }
           </div>

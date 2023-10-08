@@ -7,7 +7,7 @@ export default function DaysInput({ days, onChange }) {
         <div className={`flex flex-col row-start-1 row-end-2 `} key={day.value}>
           <label
             htmlFor={day.value}
-            className="text-[#7f5ce5] form-day-label text-xs"
+            className="text-purple-500 form-day-label text-xs"
             dir="rtl"
           >
             {day.text}
