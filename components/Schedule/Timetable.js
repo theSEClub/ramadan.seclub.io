@@ -117,7 +117,7 @@ export default function Timetable({ DAYS, HOURS }) {
                                     {lecture.startTime} - {lecture.endTime}
                                 </span>
                                 <span className="text-3xs" style={{ color: lecture.color.accent }}>
-                                    {lecture.location}
+                                    {lecture.location.substring(0, 7) + '...'}
                                 </span>
                             </div>
                         )
