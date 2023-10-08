@@ -1,6 +1,6 @@
 import { getRamadanTime } from "@/utils/ramadanTiming";
 import React, { useEffect, useState } from "react";
-import DaysInput from "./DaysInput";
+import DayInput from "./DayInput";
 import TimeInput from "./TimeInput";
 import { ACTIONS, useLecturesDispatch } from "@/context/LecturesContext";
 
@@ -167,14 +167,14 @@ export default function AddLecture({ toggleModal }) {
 
   return (
     <form
-      className="add-course-form flex flex-col justify-center items-center gap-4 rounded-md"
+      className="add-course-form flex flex-col justify-center items-center gap-8 rounded-md mt-8"
       onSubmit={(e) => handleAddLecture(e)}
     >
       <div className="flex w-full">
-        <label htmlFor="class-title" className="text-purple-500" dir="rtl">
+        <label htmlFor="class-title" className="text-purple-500 flex flex-row flex-wrap justify-between items-center w-full gap-4" dir="rtl">
           عنوان المادة
           <input
-            className="text-purple-500 my-4 mr-8 py-1 px-5 border border-purple-500 rounded-md outline-none"
+            className="text-purple-500 py-1 px-5 border border-purple-500 rounded-md outline-none"
             id="class-title"
             type="text"
             required
@@ -186,8 +186,10 @@ export default function AddLecture({ toggleModal }) {
         
       </div>
 
-      <div className="grid grid-cols-7 grid-rows-1 gap-2">
-        <DaysInput days={days} onChange={handleCheckbox} />
+      <div className="grid grid-cols-5 grid-rows-2 gap-2">
+        {days?.map((day, index) => (
+          <DayInput index={index} day={day} onChange={handleCheckbox} key={day.value}/>
+        ))}
       </div>
 
       <TimeInput
@@ -205,13 +207,13 @@ export default function AddLecture({ toggleModal }) {
       />
 
       <div className="flex w-full">
-        <label htmlFor="location" className="text-purple-500" dir="rtl">
+        <label htmlFor="location" className="text-purple-500 flex flex-wrap flex-row justify-between items-center w-full gap-4" dir="rtl">
           مكان المحاضرة
           <input
             name="location"
             type="text"
             id="location"
-            className="text-purple-500 my-4 mr-4 py-1 px-5 border border-purple-500 rounded-md outline-none"
+            className="text-purple-500 py-1 px-5 border border-purple-500 rounded-md outline-none"
             placeholder="اختياري"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
