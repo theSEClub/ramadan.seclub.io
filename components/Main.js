@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React from "react";
-// import calendar from '../assets/calendar.svg'
 import calendar from "../assets/calendar-ramadan.svg";
 import Container from "./Container";
 
