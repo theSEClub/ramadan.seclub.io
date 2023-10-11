@@ -24,7 +24,7 @@ export default function Modal({ type }) {
   return (
     <>
       <button
-        onClick={() => toggleModal()}
+        onClick={toggleModal}
         className="bg-green-se-100 px-6 py-[5px] text-green-se hover:bg-green-se-200 border-none outline-none rounded-xl"
       >
         <div className="flex items-center">
@@ -43,10 +43,10 @@ export default function Modal({ type }) {
 
       {modal && (
         <div className="modal overflow-y-scroll z-50">
-          <div onClick={() => toggleModal()} className="overlay"></div>
+          <div onClick={toggleModal} className="overlay"></div>
           <div className="modal-content">
             <div className="flex justify-end">
-              <button className="close-modal" onClick={() => toggleModal()}>
+              <button className="close-modal" onClick={toggleModal}>
                 <RxCross2 />
               </button>
             </div>
