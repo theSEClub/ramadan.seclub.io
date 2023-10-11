@@ -25,7 +25,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 -[x] Save lectures in local storage
 -[ ] Edit lecture information
 -[ ] Reset schedule (partially implemented)
--[ ] Download a copy of the schedule
+-[x] Download a copy of the schedule
 -[ ] Custom color picker option for lectures
 ## Docs
 

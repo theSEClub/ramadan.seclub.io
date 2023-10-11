@@ -2,7 +2,7 @@ import React from 'react'
 import { useLectures } from '@/context/LecturesContext'
 
 
-export default function Timetable({ DAYS, HOURS }) {
+export default function Timetable({ DAYS, HOURS, screenshotRef }) {
 
     const lectures = useLectures();
 
@@ -29,7 +29,7 @@ export default function Timetable({ DAYS, HOURS }) {
     }
 
     return (
-        <div className='bg-white py-5 border-2 border-purple-200 rounded-3xl overflow-x-auto'>
+        <div className='bg-white py-5 border-2 border-purple-200 rounded-3xl overflow-x-auto' ref={screenshotRef}>
             <div className='bg-gray-300 min-w-[340px]'>
                 <div
                     className='grid gap-0.25'
