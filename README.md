@@ -3,7 +3,7 @@ This repository contains the Ramadan Assistant developed by the SE club.
 The project aimes to create weekly schedules for courses that were affected by the time changes during the month of Ramadan.
 Note that the transformation is according to the times provided by UPM. However, you can still use it by adding courses manually if they are not automatically converted.
 
-The deployed project can accessed through [this link](https://ramadan.seclub.io).
+The deployed project can be accessed through [this link](https://ramadan.seclub.io).
 
 More details regarding the contributions can be found in this [post](https://www.linkedin.com/posts/seclub-upm_upm-seclub-goldenclub-activity-7052425321261723648-NrOo/).
 ## Getting Started

@@ -7,7 +7,7 @@ export default function Timetable({ DAYS, HOURS, screenshotRef }) {
     const lectures = useLectures();
 
     function calculateRow(time) {
-        
+
         // split time into hours and minutes
         const [hours, minutes] = time.split(":");
 
@@ -117,7 +117,11 @@ export default function Timetable({ DAYS, HOURS, screenshotRef }) {
                                     {lecture.startTime} - {lecture.endTime}
                                 </span>
                                 <span className="text-3xs" style={{ color: lecture.color.accent }}>
-                                    {lecture.location.substring(0, 7) + '...'}
+                                    {
+                                        lecture.location.length < 7
+                                            ? lecture.location
+                                            : lecture.location.substring(0, 7) + '...'
+                                    }
                                 </span>
                             </div>
                         )
