@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React from "react";
-// import calendar from '../assets/calendar.svg'
 import calendar from "../assets/calendar-ramadan.svg";
 import Container from "./Container";
 
@@ -16,7 +15,7 @@ export default function Main() {
 
         <div className="flex flex-col  justify-center pt-8 lg:pt-0 lg:pb-20">
           <h2
-            className="text-[#7f5ce5] text-3xl lg:text-6xl font-bold"
+            className="text-purple-500 text-3xl lg:text-6xl font-bold"
             dir="rtl"
           >
             جدولك في رمضان

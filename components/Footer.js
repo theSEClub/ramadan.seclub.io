@@ -5,7 +5,7 @@ import Container from "./Container";
 
 export default function Footer() {
   return (
-    <div className="bg-[var(--purple)] py-5">
+    <div className="bg-purple-500 py-5">
       <Container>
         <div className="flex items-center">
           <div className="mr-auto">
