@@ -10,7 +10,7 @@ export default function PrintSchedule() {
         const capture = document.querySelector('.schedule-container');
         setLoader(true);
 
-        const scaleFactor = 3;
+        const scaleFactor = 2;
 
         html2canvas(capture, { scale: scaleFactor }).then((canvas) => {
             const imgData = canvas.toDataURL('image/png');
