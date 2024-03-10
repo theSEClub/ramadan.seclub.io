@@ -3,6 +3,8 @@ import Modal from "../Modal/Modal";
 import Schedule from "./Schedule";
 import Container from "../Container";
 
+
+
 export default function YourSchedule() {
   const [lectures, setLectures] = useState([]);
 
@@ -27,6 +29,9 @@ export default function YourSchedule() {
             openText={"حذف مادة"}
             deleteLecture={deleteLecture}
             lectures={lectures}
+          />
+          <Modal
+            openText={"تنزيل الجدول"}
           />
         </div>
       </div>

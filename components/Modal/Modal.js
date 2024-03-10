@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import { RxPlus } from "react-icons/rx";
-import { TbTrash } from "react-icons/tb";
+import { TbTrash, TbFileDownload } from "react-icons/tb";
 import AddLectureForm from "../AddLecture/AddLectureForm";
 import DeleteLectureForm from "../DeleteLecture/DeleteLectureForm";
+import PrintSchedule from "../PrintSchedule/PrintSchedule";
+
+
 
 export default function Modal({
   openText,
   addLecture,
   deleteLecture,
+  printSchedule,
   lectures,
 }) {
   const [modal, setModal] = useState(false);
@@ -33,7 +37,7 @@ export default function Modal({
       >
         <div className="flex items-center">
           <div className="mx-1 text-sm lg:text-xl mt-[3px]">{openText}</div>
-          {openText === "إضافة مادة" ? <RxPlus /> : <TbTrash />}
+          {openText === "إضافة مادة" ? <RxPlus /> : (openText === "حذف مادة" ? <TbTrash /> : <TbFileDownload />)}
         </div>
       </button>
 
@@ -47,18 +51,27 @@ export default function Modal({
               </button>
             </div>
 
-            {openText === "إضافة مادة" ? (
-              <AddLectureForm
-                addLecture={addLecture}
-                toggleModal={toggleModal}
-              />
-            ) : (
-              <DeleteLectureForm
-                deleteLecture={deleteLecture}
-                lectures={lectures}
-                toggleModal={toggleModal}
-              />
-            )}
+            {
+              openText === "إضافة مادة" ? (
+                <AddLectureForm
+                  addLecture={addLecture}
+                  toggleModal={toggleModal}
+                />
+              ) : openText === "حذف مادة" ? (
+                <DeleteLectureForm
+                  deleteLecture={deleteLecture}
+                  lectures={lectures}
+                  toggleModal={toggleModal}
+                />
+              ) : (
+                  <PrintSchedule
+                  toggleModal={toggleModal}
+
+                  
+                  />
+                  
+              )
+            }
           </div>
         </div>
       )}

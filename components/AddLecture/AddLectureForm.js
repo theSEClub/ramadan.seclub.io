@@ -37,7 +37,7 @@ export default function AddLectureForm({ addLecture, toggleModal }) {
 
   const [clearCheckboxes, setClearCheckboxes] = useState(false);
 
-  // 😅
+  
   const malaksErrorMessage =
     "The time requested is not a standard time. The faculty members with arrangement with the students has the to propose a suitable timing for all of them ";
   const arabicErrorMessage =
