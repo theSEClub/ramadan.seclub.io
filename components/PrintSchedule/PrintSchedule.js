@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import html2canvas from 'html2canvas';
+import html2canvas from 'html2canvas'; 
 import jsPDF from 'jspdf';
 
 export default function PrintSchedule() {
@@ -10,33 +10,37 @@ export default function PrintSchedule() {
         const capture = document.querySelector('.schedule-container');
         setLoader(true);
 
-        const scaleFactor = 2;
-
-        html2canvas(capture, { scale: scaleFactor }).then((canvas) => {
+        html2canvas(capture, { 
+            scale: 2, 
+            scrollX: -window.scrollX,
+            scrollY: -window.scrollY,
+            windowWidth:1300,
+            windowHeight: 1152
+        }).then((canvas) => {
             const imgData = canvas.toDataURL('image/png');
-            const aspectRatio = canvas.width / canvas.height;
+
+            const pdfWidth = canvas.width;
+            const pdfHeight = canvas.height;
 
             const pdf = new jsPDF({
                 orientation: 'landscape',
-                unit: 'px'
+                unit: 'px',
+                format: [pdfWidth, pdfHeight]
             });
 
-            const pdfWidth = pdf.internal.pageSize.getWidth();
-            const pdfHeight = pdfWidth / aspectRatio;
-
             pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-            pdf.save('Ramadan_Schedule.pdf');
+            pdf.save('Ramadan_Schedule.pdf'); 
+            
 
+            setLoader(false);
+            setButtonClicked(true);
 
-            setTimeout(() => {
-                setLoader(false);
-            }, 1000);
+           
         });
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setButtonClicked(true);
         downloadPDF();
     };
 
@@ -53,10 +57,8 @@ export default function PrintSchedule() {
             )}
 
             {!buttonClicked && (
-                <button type="submit" className="text-[#7f5ce5] font-bold mb-7" >اضغط هُنا</button>
+                <button type="submit" className="text-[#7f5ce5] font-bold mb-7">اضغط هُنا</button>
             )}
         </form>
     );
 };
-
-
