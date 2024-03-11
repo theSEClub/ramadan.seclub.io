@@ -15,7 +15,7 @@ export default function PrintSchedule() {
             scrollX: -window.scrollX,
             scrollY: -window.scrollY,
             windowWidth: 1300,
-            windowHeight: 1152
+            windowHeight: 1152,
         }).then((canvas) => {
             const imgData = canvas.toDataURL('image/png');
 
@@ -30,12 +30,8 @@ export default function PrintSchedule() {
 
             pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
 
-
             const pdfBlob = pdf.output('blob');
-
-
             const pdfUrl = URL.createObjectURL(pdfBlob);
-
 
             const downloadLink = document.createElement('a');
             downloadLink.href = pdfUrl;
@@ -43,7 +39,6 @@ export default function PrintSchedule() {
 
             document.body.appendChild(downloadLink);
             downloadLink.click();
-
 
             document.body.removeChild(downloadLink);
             URL.revokeObjectURL(pdfUrl);
@@ -53,13 +48,12 @@ export default function PrintSchedule() {
         });
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    const handleButtonClick = () => {
         downloadPDF();
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form>
             {buttonClicked && (
                 <div className="text-[#7f5ce5] font-bold mb-7">
                     {loader ? (
@@ -71,7 +65,7 @@ export default function PrintSchedule() {
             )}
 
             {!buttonClicked && (
-                <button type="submit" className="text-[#7f5ce5] font-bold mb-7">اضغط هُنا</button>
+                <button type="button" className="text-[#7f5ce5] font-bold mb-7" onClick={handleButtonClick}>اضغط هُنا</button>
             )}
         </form>
     );
